@@ -1,0 +1,26 @@
+{
+    "name": "elxdigital/cta-button",
+    "description": "Botão de chamada para ação desenvolvido e usado pela Ellox Inteligência Digital",
+    "type": "component",
+    "require": {
+        "php": ">=8.2",
+        "ext-pdo": "*",
+        "league/plates": "3.*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Elxdigital\\CtaButton\\": "src/"
+        },
+        "files": [
+            "src/helper/string.php",
+            "config/set-variables.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Ellox Inteligência Digital",
+            "email": "desenvolvimento@ellox.com.br"
+        }
+    ]
+}

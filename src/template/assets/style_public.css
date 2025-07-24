@@ -1,0 +1,53 @@
+#modalOverlay {
+    display: none;
+    position: fixed;
+    z-index: 9998;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.45);
+}
+
+/* Container da modal */
+.modal-button-cta {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 320px;
+    max-width: 90vw;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.16);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    animation: modalOpen .22s cubic-bezier(.2,1,.3,1);
+}
+
+/* Animação simples ao abrir */
+@keyframes modalOpen {
+    from { opacity: 0; transform: translate(-50%,-45%) scale(.98);}
+    to   { opacity: 1; transform: translate(-50%,-50%) scale(1);}
+}
+
+/* Botão de fechar */
+.fecharModal {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 1.7em;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.fecharModal:hover { color: #d32f2f; }
+
+@media (max-width: 600px) {
+    .modal-button-cta {
+        min-width: 90vw;
+        padding: 1.2rem .8rem 1rem .8rem;
+    }
+}
