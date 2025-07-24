@@ -3,7 +3,7 @@
     "description": "Botão de chamada para ação desenvolvido e usado pela Ellox Inteligência Digital",
     "type": "component",
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.0",
         "ext-pdo": "*",
         "league/plates": "3.*",
         "ext-mbstring": "*"
