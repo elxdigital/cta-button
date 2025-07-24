@@ -2,16 +2,24 @@
 Esta dependência foi criada para otimizar a alta frequência de uso em projetos próprios da Ellox, onde sites institucionais tendem a recorrer deste recurso com alta demanda, se tratando de seu objetivo principal.
 
 ## Requisitos:
-* Tabela criada no banco de dados nomeada de: cta_button;
-* Model referente a tabela mencionada no tópico anterior;
-* É indiscutível que a tabela tenha, pelo menos, os seguintes campos:
-1. id - identificador do registro
-2. tipo_cta - lead, whatsapp ou externo
-3. btn_titulo - título a ser visualizado no botão
-4. form_lead - formulário que abrirá para preencher leads
-5. contato_wpp - contato do WhatsApp a ser chamado
-6. link_redir - link a ser redirecionado (interno ou externo)
-7. cliques - número de cliques no botão
+* php >=8.0
+* ext-pdo
+* league/plates 3.*
+* ext-mbstring
+* jQuery e jQuery Mask
+* Bootstrap 4
+* Se já criada a tabela `cta_button`, é indiscutível que tenha, pelo menos, os seguintes campos:
+
+```
+id - identificador do registro
+btn_identificador - um identificador único para o botão
+tipo_cta - lead, whatsapp ou externo
+btn_titulo - título a ser visualizado no botão
+form_lead - formulário que abrirá para preencher leads
+contato_wpp - contato do WhatsApp a ser chamado
+link_redir - link a ser redirecionado (interno ou externo)
+cliques - número de cliques no botão
+```
 
 ## Recurosos disponíveis:
 Campo de formulário HTML do tipo 'select' com as seguintes opções:
@@ -21,10 +29,10 @@ Campo de formulário HTML do tipo 'select' com as seguintes opções:
 
 ## Qual é o objetivo de cada um deles?
 ### ✔️ Formulário para Captura de Leads
-Vista abrir uma modal com um formulário de lead, onde o usuário do site preenche seus dados, sendo
-posteriormente redirecionado para uma conversa do WhatsApp.
+Vista abrir uma modal com um formulário de lead, onde o usuário do site preenche seus dados, ficando
+a responsabilidade do destino ou manipulação dos dados a cargo do sistema.
 
-* **Campos preenchidos**: formulário a ser preenchido e contato do WhatsApp.
+* **Campos preenchidos**: formulário a ser preenchido.
 
 ### ✔️ Redirecionamento Direto para WhatsApp
 Vista redirecionar o usuário, sem nenhum tipo de intermediação, para uma conversa do WhatsApp.
@@ -44,19 +52,34 @@ Exemplo:
     Link interno: /sobre, /produtos, etc...
 
 ## Como usar?
+### Parte do Painel Administrativo (admin):
 * `Button` - Instanciar a classe principal.
-* `connectDataBase` - Inicia uma conexão com o banco de dados, que aceita os parâmetros: (bool) criar tabela básica para botão, (string) host, (string) nome do banco de dados, (string) usuário, (string) senha e a (string) porta.
-* `setConversao` - recebe como parâmetro um identificador da conversão do tipo int, caso exista e esteja salva na tabela que deseja.
-* `setFormulariosLead` - recebe como parâmetro um array de formulários disponíveis para a opção de lead.
-* `addFormularioLead` - recebe como parâmetro um array para adicionar uma opção às opções já existentes de formulário para a opção lead. Cada nova opção deve ser um item do array passado no parâmetro, contendo os indexes `key` e `value`.
-* `renderPublic` - renderiza o botão no site, ou seja, na parte que o usuário final vê.
+  * Ex.: `new \Elxdigital\CtaButton\Button()`
+
+#### Métodos
 * `renderPrivate` - renderiza o select no painel administrativo do site, ou seja, na parte de quem está gerenciando o conteúdo do site vê.
+  * Parâmetros (já na ordem devidamente passada ao método):
+    * `field_name` - atributo name do input no formulário principal, ou seja, nome da coluna na tabela que você deseja salvar essa FK. 
+    * `identificador` - identificador utilizado para diferenciar botões, mesmo que estes tenham o mesmo nome na FK.
+    * `formularios` - formulários disponíveis no seu site, aparecerão no select caso o objetivo do botão seja conversão de leads.
+    * `btn_cta_id` (opcional) - caso já tenha um botão cadastrado na tabela, esse id da FK é passado neste parâmetro.
+
+### Parte no Site (público):
+* `Button` - Instanciar a classe principal.
+  * Parâmetro:
+    * `template_path` - caminho/path para os templates do seu site.
+
+#### Métodos
+* `renderPublic` - renderiza o botão no site, ou seja, na parte que o usuário final vê.
+  * Parâmetro:
+    * `btn_cta_id` - id do botão que deseja ser renderizado na tela e acessado pelos usuários do site.
 
 ## Tabela de exemplo para cta_button:
 ```php
     CREATE TABLE cta_button (
       id INT AUTO_INCREMENT PRIMARY KEY,
       tipo_cta ENUM('lead', 'whatsapp', 'externo') NOT NULL,
+      btn_identificador VARCHAR(255) NOT NULL,
       btn_titulo VARCHAR(255) NOT NULL,
       form_lead TEXT DEFAULT NULL,
       contato_wpp VARCHAR(20) DEFAULT NULL,
@@ -66,3 +89,9 @@ Exemplo:
       data_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     );
 ```
+
+## Mais Dúvidas?
+Dentro do projeto temos alguns exemplos, tanto para uso no painel administrativo como no site,
+para que assim você possa se guiar e utilizar em seu sistema :)
+
+Os exemplos se encontram na pasta `examples` na raíz da dependência.
