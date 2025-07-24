@@ -43,7 +43,7 @@ class Button
         $tipos_conversao = $this->getTiposConversao();
 
         $controller = new \Elxdigital\CtaButton\Controller\ButtonController();
-        $controller->render_admin($field_name, $identificador, $tipos_conversao, $formularios, $btn_id);
+        $controller->render_admin($field_name, $identificador, $formularios, $btn_id, $tipos_conversao);
     }
 
     /**

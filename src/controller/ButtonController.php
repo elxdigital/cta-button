@@ -29,7 +29,7 @@ class ButtonController
         ]);
     }
 
-    public function render_admin(string $field_name, string $btn_identificador, array $tipos_conversao, array $formularios, ?int $btn_id = null): void
+    public function render_admin(string $field_name, string $btn_identificador, array $formularios, ?int $btn_id, array $tipos_conversao): void
     {
         $this->view = new \Elxdigital\CtaButton\View\View(__DIR__ . "/../template/");
 
