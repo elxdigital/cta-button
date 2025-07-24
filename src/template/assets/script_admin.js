@@ -25,32 +25,40 @@ $(document).ready(function () {
     switch (tipo_cta_selecionado) {
         case 'lead':
             // esconde e remove valor de campos que não são iniciados
-            $("#link_redir_div").val("");
+            $("#contato_wpp").val("");
+            $("#contato_wpp_div").hide();
+
+            $("#link_redir").val("");
             $("#link_redir_div").hide();
 
             break;
         case 'whatsapp':
             // esconde e remove valor de campos que não são iniciados
-            $("#form_lead_div").val("");
+            $("#form_lead").val(" ").trigger('change');
             $("#form_lead_div").hide();
 
-            $("#link_redir_div").val("");
+            $("#link_redir").val("");
             $("#link_redir_div").hide();
 
             break;
         case 'externo':
             // esconde e remove valor de campos que não são iniciados
-            $("#form_lead_div").val("");
+            $("#form_lead").val(" ").trigger('change');
             $("#form_lead_div").hide();
 
-            $("#contato_wpp_div").val("");
+            $("#contato_wpp").val("");
             $("#contato_wpp_div").hide();
 
             break;
         default:
             $("#form_lead_div").hide();
+            $("#form_lead").val(" ").trigger('change');
+
             $("#contato_wpp_div").hide();
+            $("#contato_wpp").val("");
+
             $("#link_redir_div").hide();
+            $("#link_redir").val("");
     }
 
     $("#tipo_cta").on('change', function () {
@@ -60,9 +68,11 @@ $(document).ready(function () {
             case 'lead':
                 // mostrar campos necessários
                 $("#form_lead_div").show();
-                $("#contato_wpp_div").show();
 
                 // esconde e remove value de campos desnecessários
+                $("#contato_wpp").val("");
+                $("#contato_wpp_div").hide();
+
                 $("#link_redir").val("");
                 $("#link_redir_div").hide();
 
