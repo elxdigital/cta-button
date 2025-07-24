@@ -1,11 +1,11 @@
 <?php
 require "../vendor/autoload.php";
-require_once "dependencias.php";
+require_once "dep/dependencias.php";
 
 /**
  * MOCK DE DADOS, PASSE O ID NECESSÁRIO QUE DESEJA CARREGAR NA TELA
  */
-$btn_id = 3;
+$btn_id = 1;
 
 /**
  * IMPORTANTE PASSAR O CAMINHO DAS VIEWS DO SISTEMA QUE USARÁ ESTE BOTÃO

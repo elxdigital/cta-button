@@ -1,6 +1,6 @@
 <?php
 require "../vendor/autoload.php";
-require_once "dependencias.php";
+require_once "dep/dependencias.php";
 
 $button = new \Elxdigital\CtaButton\Button();
 
@@ -10,7 +10,7 @@ $button = new \Elxdigital\CtaButton\Button();
  */
 
 $data = null;
-$data = (object) ['btn_cta' => 1];
+//$data = (object) ['btn_cta' => 1];
 $forms = ["contato" => "Formulário de Contato", "curriculo" => "Formulário de Currículo", "modal" => "Formulário de Modal"];
 ?>
 
