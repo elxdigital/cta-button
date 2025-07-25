@@ -13,8 +13,7 @@
             "Elxdigital\\CtaButton\\": "src/"
         },
         "files": [
-            "src/helper/string.php",
-            "config/set-variables.php"
+            "src/helper/string.php"
         ]
     },
     "authors": [

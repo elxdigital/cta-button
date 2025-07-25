@@ -1,6 +1,7 @@
 <?php
 require "../vendor/autoload.php";
 require_once "dep/dependencias.php";
+require_once "dep/set-variables.php";
 
 /**
  * MOCK DE DADOS, PASSE O ID NECESSÁRIO QUE DESEJA CARREGAR NA TELA
