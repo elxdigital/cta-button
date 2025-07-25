@@ -21,14 +21,16 @@ link_redir - link a ser redirecionado (interno ou externo)
 cliques - número de cliques no botão
 ```
 
-* Ter declarada as seguintes constantes:
-  * CONF_URL_BASE - url utilizada
-  * CONF_URL_TEST - url utilizada
-  * CONF_DB_HOST - database host
-  * CONF_DB_NAME - database name
-  * CONF_DB_USER - database user
-  * CONF_DB_PASS - database password
-  * CONF_DB_PORT - database port
+* Ter as seguintes constantes previamente declaradas:
+  * url:
+    * CONF_URL_BASE - url utilizada
+    * CONF_URL_TEST - url utilizada
+  * data base:
+    * CONF_DB_HOST - database host
+    * CONF_DB_NAME - database name
+    * CONF_DB_USER - database user
+    * CONF_DB_PASS - database password
+    * CONF_DB_PORT - database port
 
 ## Recurosos disponíveis:
 Campo de formulário HTML do tipo 'select' com as seguintes opções:
@@ -106,7 +108,7 @@ Copiar arquivos de estilo/script para acesso público: <br>
 ```
 
 ## Mais Dúvidas?
-Dentro do projeto temos alguns exemplos, tanto para uso no painel administrativo como no site,
+Dentro do projeto temos alguns exemplos, tanto para uso no painel administrativo quanto no site,
 para que assim você possa se guiar e utilizar em seu sistema :)
 
 Os exemplos se encontram na pasta `examples` na raíz da dependência.
