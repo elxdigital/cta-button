@@ -1,6 +1,6 @@
 <?php
 
-function str_slug(string $raw_string): string
+function string_slug(string $raw_string): string
 {
     $pre_formated_string = mb_strtolower(html_entity_decode($raw_string));
 

@@ -47,7 +47,7 @@ class Button
 
         $data["id"] = !empty($data["id"]) ? (int) $data["id"] : null;
         $data["contato_wpp"] = !empty($data["contato_wpp"]) ? preg_replace('/\D/', '', $data["contato_wpp"]) : null;
-        $data["form_lead"] = !empty($data["form_lead"]) ? \str_slug($data["form_lead"]) : null;
+        $data["form_lead"] = !empty($data["form_lead"]) ? \string_slug($data["form_lead"]) : null;
         $data["link_redir"] = $data["link_redir"] ?? null;
 
         $btnObject = (object) $data;
