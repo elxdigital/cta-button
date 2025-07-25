@@ -61,6 +61,12 @@ Exemplo:
     Link interno: /sobre, /produtos, etc...
 
 ## Como usar?
+Adicionar dependência ao projeto: <br>
+`composer require elxdigital/cta-button`
+
+Copiar arquivos de estilo/script para acesso público: <br>
+`cp -r vendor/elxdigital/cta-button/src/template/assets src/template/assets`
+
 ### Parte do Painel Administrativo (admin):
 * `Button` - Instanciar a classe principal.
   * Ex.: `new \Elxdigital\CtaButton\Button()`
