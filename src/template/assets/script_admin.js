@@ -123,12 +123,11 @@ $(document).ready(function () {
             dadosFilho[$(this).attr('name')] = $(this).val();
         });
 
-        var url = window.location.href;
         var origin = window.location.origin;
         var path = window.location.pathname.split('/').filter(Boolean)[0];
         var baseUrl = origin + '/' + path;
 
-        $.post(baseUrl + '/index.php?route=button/save', dadosFilho)
+        $.post(baseUrl + '/src/routes/index.php?route=button/save', dadosFilho)
             .done(function(resposta) {
                 let resp = JSON.parse(resposta);
 
