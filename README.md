@@ -21,6 +21,15 @@ link_redir - link a ser redirecionado (interno ou externo)
 cliques - número de cliques no botão
 ```
 
+* Ter declarada as seguintes constantes:
+  * CONF_URL_BASE - url utilizada
+  * CONF_URL_TEST - url utilizada
+  * CONF_DB_HOST - database host
+  * CONF_DB_NAME - database name
+  * CONF_DB_USER - database user
+  * CONF_DB_PASS - database password
+  * CONF_DB_PORT - database port
+
 ## Recurosos disponíveis:
 Campo de formulário HTML do tipo 'select' com as seguintes opções:
 * Formulário para Captura de Leads
