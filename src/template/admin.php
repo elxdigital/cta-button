@@ -6,8 +6,10 @@
  * @var array $tipos_conversao
  * @var array $formularios
  */
+
+$script_path = getFullUrl("src/template/assets/script_admin.js");
 ?>
-<script rel="text/javascript" src="../src/template/assets/script_admin.js" defer></script>
+<script rel="text/javascript" src="<?= $script_path ?>" defer></script>
 
 <div id="btn_form">
     <div class="card mb-4">
@@ -70,9 +72,9 @@
                 <!-- end campos condicionais -->
                 <!-- --------------------------------------------------------------------- -->
             </div>
-        </div>
 
-        <button type="button" id="btn_save_btn_cta">Salvar Botão</button>
+            <button type="button" id="btn btn-success mb-1 btn_save_btn_cta">Salvar Botão</button>
+        </div>
     </div>
 </div>
 
