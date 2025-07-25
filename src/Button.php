@@ -2,9 +2,9 @@
 
 namespace Elxdigital\CtaButton;
 
-require "../vendor/autoload.php";
-require_once "../src/helper/string.php";
-require_once "../src/helper/url.php";
+require __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../src/helper/string.php";
+require_once __DIR__ . "/../src/helper/url.php";
 
 class Button
 {

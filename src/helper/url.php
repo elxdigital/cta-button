@@ -1,6 +1,6 @@
 <?php
 
-function url(string $path = null): string
+function getFullUrl(string $path = null): string
 {
     if (strpos($_SERVER['HTTP_HOST'], "localhost")) {
         if ($path) {
@@ -16,7 +16,7 @@ function url(string $path = null): string
     return CONF_URL_BASE;
 }
 
-function seeUrl(string $url): string
+function seeFullUrl(string $url): string
 {
     if (str_contains($url, 'http://') || str_contains($url, 'https://')) {
         return $url;
@@ -27,7 +27,7 @@ function seeUrl(string $url): string
     }
 
     if (str_starts_with($url, '/')) {
-        return url($url);
+        return getFullUrl($url);
     }
 
     return $url;

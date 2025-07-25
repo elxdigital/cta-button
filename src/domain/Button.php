@@ -26,7 +26,7 @@ class Button
                 break;
             case "externo":
                 $target_blank = openOnNewWindow($this->getLinkRedir()) ? "target='_blank'" : "";
-                $url_redirect = seeUrl($this->getLinkRedir());
+                $url_redirect = seeFullUrl($this->getLinkRedir());
                 $html = "<a href='{$url_redirect}' {$target_blank}>" . $this->getBtnTitulo() . "</a>";
 
                 break;
