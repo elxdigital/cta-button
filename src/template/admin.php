@@ -73,7 +73,7 @@ $script_path = getFullUrl("src/template/assets/script_admin.js");
                 <!-- --------------------------------------------------------------------- -->
             </div>
 
-            <button type="button" id="btn btn-success mb-1 btn_save_btn_cta">Salvar Botão</button>
+            <button type="button" id="btn_save_btn_cta" class="btn btn-success mb-1">Salvar Botão</button>
         </div>
     </div>
 </div>
