@@ -11,23 +11,37 @@ class Button
         $this->button_cta = $button;
     }
 
-    public function getFunction(): string
+    public function getFunction(array $arrayClasses, bool $span): string
     {
         $funcao = $this->getTipoCta();
 
+        if (!empty($arrayClasses["class"])) {
+            $arrayClasses["class"] .= " btn-border open-modal-button-cta";
+        } else {
+            $arrayClasses["class"] = "btn-border open-modal-button-cta";
+        }
+
+        $attr_str = implode(' ', array_map(
+            fn($k, $v) => "$k='$v'",
+            array_keys($arrayClasses),
+            $arrayClasses
+        ));
+
+        $content_str = $span ? "<span>" . $this->getBtnTitulo() . "</span>" : $this->getBtnTitulo();
+
         switch ($funcao) {
             case "lead":
-                $html = "<a href='#form-" . $this->getBtnIdentificador() . "' class='btn-border open-modal-button-cta'>" . $this->getBtnTitulo() . "</a>";
+                $html = "<a href='#form-" . $this->getBtnIdentificador() . "' {$attr_str}>{$content_str}</a>";
 
                 break;
             case "whatsapp":
-                $html = "<a href='https://api.whatsapp.com/send/?phone=55" . $this->getContatoWpp() . "' target='_blank'>" . $this->getBtnTitulo() . "</a>";
+                $html = "<a href='https://api.whatsapp.com/send/?phone=55" . $this->getContatoWpp() . "' target='_blank' {$attr_str}>{$content_str}</a>";
 
                 break;
             case "externo":
                 $target_blank = openOnNewWindow($this->getLinkRedir()) ? "target='_blank'" : "";
                 $url_redirect = seeFullUrl($this->getLinkRedir());
-                $html = "<a href='{$url_redirect}' {$target_blank}>" . $this->getBtnTitulo() . "</a>";
+                $html = "<a href='{$url_redirect}' {$target_blank} {$attr_str}>{$content_str}</a>";
 
                 break;
             default:

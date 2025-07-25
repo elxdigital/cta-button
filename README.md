@@ -71,7 +71,7 @@ Copiar arquivos de estilo/script para acesso público: <br>
 
 ### Parte do Painel Administrativo (admin):
 * `Button` - Instanciar a classe principal.
-  * Ex.: `new \Elxdigital\CtaButton\Button()`
+  * Ex.: `new \Elxdigital\CtaButton\Button();`
 
 #### Métodos
 * `renderPrivate` - renderiza o select no painel administrativo do site, ou seja, na parte de quem está gerenciando o conteúdo do site vê.
@@ -83,6 +83,7 @@ Copiar arquivos de estilo/script para acesso público: <br>
 
 ### Parte no Site (público):
 * `Button` - Instanciar a classe principal.
+  * Ex.: `new \Elxdigital\CtaButton\Button("caminho_para_views");`
   * Parâmetro:
     * `template_path` - caminho/path para os templates do seu site.
 
@@ -90,6 +91,8 @@ Copiar arquivos de estilo/script para acesso público: <br>
 * `renderPublic` - renderiza o botão no site, ou seja, na parte que o usuário final vê.
   * Parâmetro:
     * `btn_cta_id` - id do botão que deseja ser renderizado na tela e acessado pelos usuários do site.
+    * `estilos` (opcional) - array de estilos, com flexibilidade para passar qualquer atributo possível em uma tag \<a> do HTML.
+    * `span` (opcional) - boolean, se quiser que o conteúdo da tag \<a> seja envolto em uma tag \<span>, por padrão: false.
 
 ## Tabela de exemplo para cta_button:
 ```php

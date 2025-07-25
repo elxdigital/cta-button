@@ -2,12 +2,14 @@
 /**
  * @var \League\Plates\Template\Template $this
  * @var object $btn_conversao
+ * @var array $arrayClasses
  * @var bool $hasModal
  * @var string $form
+ * @var bool $span
  */
 
 $button = new \Elxdigital\CtaButton\Domain\Button($btn_conversao);
-echo $button->getFunction();
+echo $button->getFunction($arrayClasses, $span);
 
 if ($hasModal && !empty($form)) {
     echo <<<HTML
