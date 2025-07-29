@@ -47,14 +47,15 @@ class Button
 
         $data["id"] = !empty($data["id"]) ? (int) $data["id"] : null;
         $data["contato_wpp"] = !empty($data["contato_wpp"]) ? preg_replace('/\D/', '', $data["contato_wpp"]) : null;
+        $data["message_wpp"] = !empty($data["message_wpp"]) ? rawurlencode($data["message_wpp"]) : null;
         $data["form_lead"] = !empty($data["form_lead"]) ? \string_slug($data["form_lead"]) : null;
         $data["link_redir"] = $data["link_redir"] ?? null;
 
         $btnObject = (object) $data;
         if (!empty($btnObject->id)) {
-            $insertQuery = "UPDATE `cta_button` SET `tipo_cta` = :tipo_cta, `btn_identificador` = :btn_identificador, `btn_titulo` = :btn_titulo, `form_lead` = :form_lead, `contato_wpp` = :contato_wpp, link_redir = :link_redir WHERE `id` = {$btnObject->id};";
+            $insertQuery = "UPDATE `cta_button` SET `tipo_cta` = :tipo_cta, `btn_identificador` = :btn_identificador, `btn_titulo` = :btn_titulo, `form_lead` = :form_lead, `contato_wpp` = :contato_wpp, `message_wpp` = :message_wpp, link_redir = :link_redir WHERE `id` = {$btnObject->id};";
         } else {
-            $insertQuery = "INSERT INTO `cta_button` (tipo_cta, btn_identificador, btn_titulo, form_lead, contato_wpp, link_redir) VALUES (:tipo_cta, :btn_identificador, :btn_titulo, :form_lead, :contato_wpp, :link_redir);";
+            $insertQuery = "INSERT INTO `cta_button` (tipo_cta, btn_identificador, btn_titulo, form_lead, contato_wpp, message_wpp, link_redir) VALUES (:tipo_cta, :btn_identificador, :btn_titulo, :form_lead, :contato_wpp, :message_wpp, :link_redir);";
         }
 
         $params = [
@@ -63,6 +64,7 @@ class Button
             ':btn_titulo'        => $btnObject->btn_titulo,
             ':form_lead'         => $btnObject->form_lead,
             ':contato_wpp'       => $btnObject->contato_wpp,
+            ':message_wpp'       => $btnObject->message_wpp,
             ':link_redir'        => $btnObject->link_redir,
         ];
 

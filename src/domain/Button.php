@@ -35,12 +35,17 @@ class Button
 
                 break;
             case "whatsapp":
-                $html = "<a href='https://api.whatsapp.com/send/?phone=55" . $this->getContatoWpp() . "' target='_blank' {$attr_str}>{$content_str}</a>";
+                $msg = $this->getMessageWpp();
+                $msgWpp = !empty($msg) ? ("&text={$msg}") : "";
+                $contatoWpp = $this->getContatoWpp();
+
+                $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str}>{$content_str}</a>";
 
                 break;
             case "externo":
                 $target_blank = openOnNewWindow($this->getLinkRedir()) ? "target='_blank'" : "";
                 $url_redirect = seeFullUrl($this->getLinkRedir());
+
                 $html = "<a href='{$url_redirect}' {$target_blank} {$attr_str}>{$content_str}</a>";
 
                 break;
@@ -68,11 +73,6 @@ class Button
         return $this->button_cta->btn_titulo;
     }
 
-    public function getFormLead(): string
-    {
-        return $this->button_cta->form_lead;
-    }
-
     public function getContatoWpp(): string
     {
         return $this->button_cta->contato_wpp;
@@ -83,8 +83,8 @@ class Button
         return $this->button_cta->link_redir;
     }
 
-    public function getCliques(): int
+    public function getMessageWpp()
     {
-        return $this->button_cta->cliques;
+        return $this->button_cta->message_wpp;
     }
 }

@@ -17,6 +17,7 @@ tipo_cta - lead, whatsapp ou externo
 btn_titulo - título a ser visualizado no botão
 form_lead - formulário que abrirá para preencher leads
 contato_wpp - contato do WhatsApp a ser chamado
+message_wpp - mensagem enviada quando abrir o WhatsApp
 link_redir - link a ser redirecionado (interno ou externo)
 cliques - número de cliques no botão
 ```
@@ -106,6 +107,7 @@ Copiar arquivo de rotas para acesso público: <br>
       btn_titulo VARCHAR(255) NOT NULL,
       form_lead TEXT DEFAULT NULL,
       contato_wpp VARCHAR(20) DEFAULT NULL,
+      message_wpp VARCHAR(255) DEFAULT NULL,
       link_redir TEXT DEFAULT NULL,
       cliques INT UNSIGNED NOT NULL DEFAULT 0,
       data_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

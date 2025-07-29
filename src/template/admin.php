@@ -63,6 +63,13 @@ $script_path = getFullUrl("src/template/assets/script_admin.js");
                     <p class="text-muted">Número de telefone com DDD. Ex: (51) 99999-9999</p>
                 </div>
 
+                <div class="form-group has-float-label" id="message_wpp_div">
+                    <label for="message_wpp">Texto da Mensagem</label>
+                    <input type="text" class="form-control" id="message_wpp" name="message_wpp"
+                           value="<?= !empty($btn_conversao?->message_wpp) ? rawurldecode($btn_conversao->message_wpp) : null ?>">
+                    <p class="text-muted">Limite de 255 caracteres</p>
+                </div>
+
                 <div class="form-group has-float-label" id="link_redir_div">
                     <label for="link_redir">Link de Redirecionamento</label>
                     <input type="text" class="form-control" id="link_redir" name="link_redir"

@@ -16,11 +16,11 @@ class DataBaseConnection
 
     public function __construct() 
     {
-        $this->host = \CONF_DB_HOST ?? 'localhost';
-        $this->dbname = \CONF_DB_NAME ?? '';
-        $this->user = \CONF_DB_USER ?? 'root';
-        $this->password = \CONF_DB_PASS ?? '';
-        $this->port = \CONF_DB_PORT ?? 3306;
+        $this->host = !defined('CONF_DB_HOST') || empty(\CONF_DB_HOST) ? 'localhost' : \CONF_DB_HOST;
+        $this->dbname = !defined('CONF_DB_NAME') || empty(\CONF_DB_NAME) ? 'btn_test' : \CONF_DB_NAME;
+        $this->user = !defined('CONF_DB_USER') || empty(\CONF_DB_USER) ? 'root' : \CONF_DB_USER;
+        $this->password = !defined('CONF_DB_PASS') || empty(\CONF_DB_PASS) ? '' : \CONF_DB_PASS;
+        $this->port = !defined('CONF_DB_PORT') || empty(\CONF_DB_PORT) ? 3306 : \CONF_DB_PORT;
     }
 
     /**

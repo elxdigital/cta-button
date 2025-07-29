@@ -28,6 +28,9 @@ $(document).ready(function () {
             $("#contato_wpp").val("");
             $("#contato_wpp_div").hide();
 
+            $("#message_wpp").val("");
+            $("#message_wpp_div").hide();
+
             $("#link_redir").val("");
             $("#link_redir_div").hide();
 
@@ -49,6 +52,9 @@ $(document).ready(function () {
             $("#contato_wpp").val("");
             $("#contato_wpp_div").hide();
 
+            $("#message_wpp").val("");
+            $("#message_wpp_div").hide();
+
             break;
         default:
             $("#form_lead_div").hide();
@@ -56,6 +62,9 @@ $(document).ready(function () {
 
             $("#contato_wpp_div").hide();
             $("#contato_wpp").val("");
+
+            $("#message_wpp").val("");
+            $("#message_wpp_div").hide();
 
             $("#link_redir_div").hide();
             $("#link_redir").val("");
@@ -73,6 +82,9 @@ $(document).ready(function () {
                 $("#contato_wpp").val("");
                 $("#contato_wpp_div").hide();
 
+                $("#message_wpp").val("");
+                $("#message_wpp_div").hide();
+
                 $("#link_redir").val("");
                 $("#link_redir_div").hide();
 
@@ -80,6 +92,7 @@ $(document).ready(function () {
             case 'whatsapp':
                 // mostrar campos necessários
                 $("#contato_wpp_div").show();
+                $("#message_wpp_div").show();
 
                 // esconde e remove value de campos desnecessários
                 $("#form_lead").val(" ").trigger('change');
@@ -100,6 +113,9 @@ $(document).ready(function () {
                 $("#contato_wpp").val("");
                 $("#contato_wpp_div").hide();
 
+                $("#message_wpp").val("");
+                $("#message_wpp_div").hide();
+
                 break;
             default:
                 // action default
@@ -108,6 +124,9 @@ $(document).ready(function () {
 
                 $("#contato_wpp").val("");
                 $("#contato_wpp_div").hide();
+
+                $("#message_wpp").val("");
+                $("#message_wpp_div").hide();
 
                 $("#link_redir").val("");
                 $("#link_redir_div").hide();
