@@ -39,7 +39,7 @@ class Button
                 $msgWpp = !empty($msg) ? ("&text={$msg}") : "";
                 $contatoWpp = $this->getContatoWpp();
 
-                $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str}>{$content_str}</a>";
+                $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str}><i class='fa-brands fa-whatsapp'></i> {$content_str}</a>";
 
                 break;
             case "externo":
