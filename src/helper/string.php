@@ -119,7 +119,7 @@ function string_slug(string $raw_string): string
     return $slug;
 }
 
-function is_email(string $email): bool
+function is_str_email(string $email): bool
 {
     $filter = filter_var($email, FILTER_VALIDATE_EMAIL);
     if ($filter) {

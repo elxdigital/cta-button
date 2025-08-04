@@ -59,12 +59,12 @@ class Email
             return false;
         }
 
-        if (!is_email($this->data->recipient_email)) {
+        if (!is_str_email($this->data->recipient_email)) {
             $this->message->warning("O e-mail de destinatário não é válido");
             return false;
         }
 
-        if (!is_email($from)) {
+        if (!is_str_email($from)) {
             $this->message->warning("O e-mail de remetente não é válido");
             return false;
         }
