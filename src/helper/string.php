@@ -140,7 +140,7 @@ function is_str_email(string $email): bool
  * @param string $mask (Ex.: ###.###.###-##)
  * @return string
  */
-function str_mask(string $val, string $mask): string
+function get_str_mask(string $val, string $mask): string
 {
     $maskared = '';
     $k = 0;
@@ -159,7 +159,7 @@ function str_mask(string $val, string $mask): string
     return $maskared;
 }
 
-function str_phone(string $phone): ?string
+function get_str_phone(string $phone): ?string
 {
     $tel = preg_replace("/[^0-9]/", "", $phone);
 
@@ -186,9 +186,9 @@ function str_phone(string $phone): ?string
         $tel = $ddd . $numero;
 
         if (strlen($tel) == '10') {
-            return str_mask($tel, '(##) ####-####');
+            return get_str_mask($tel, '(##) ####-####');
         } else if (strlen($tel) == '11') {
-            return str_mask($tel, '(##) #####-####');
+            return get_str_mask($tel, '(##) #####-####');
         } else {
             return null;
         }

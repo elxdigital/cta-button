@@ -7,7 +7,7 @@ class Contato
     public function email(array $data): void
     {
         $data['nome'] = ucwords(mb_strtolower(trim($data['nome']), 'UTF-8'));
-        $data['telefone'] = trim(str_phone($data['telefone']));
+        $data['telefone'] = trim(get_str_phone($data['telefone']));
         $data['email'] = mb_strtolower(trim($data['email']), 'UTF-8');
         $data['btn_id'] = filter_var($data["btn_id"], FILTER_VALIDATE_INT);
 
