@@ -3,6 +3,7 @@
 namespace Elxdigital\CtaButton;
 
 require __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/dep/set-variables.php";
 require_once __DIR__ . "/../src/helper/string.php";
 require_once __DIR__ . "/../src/helper/url.php";
 

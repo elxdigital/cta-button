@@ -2,6 +2,8 @@
 
 namespace Elxdigital\CtaButton\Domain;
 
+require_once __DIR__ . "/../dep/set-variables.php";
+
 class Email
 {
     private \PHPMailer\PHPMailer\PHPMailer $mail;

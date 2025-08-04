@@ -16,8 +16,7 @@
         },
         "files": [
             "src/helper/string.php",
-            "src/helper/url.php",
-            "src/dep/set-variables.php"
+            "src/helper/url.php"
         ]
     },
     "authors": [
