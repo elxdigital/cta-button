@@ -15,6 +15,7 @@ class Button
     {
         $this->public_template_path = $template_path;
         $this->tipos_conversao = [
+            'lead_whatsapp' => 'Capturar Lead + Redirecionar para WhatsApp',
             'lead' => 'Capturar Lead',
             'whatsapp' => 'Direto por WhatsApp',
             'externo' => 'Link Externo'

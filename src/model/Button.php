@@ -84,4 +84,31 @@ class Button
 
         return !empty($btnObject?->id) ? $btnObject->id : $pdo->lastInsertId();
     }
+
+    public function addClique(int $id)
+    {
+        $button = $this->get($id);
+        $cliques = $button->cliques + 1;
+
+        $insertQuery = "UPDATE `cta_button` SET `cliques` = :cliques WHERE `id` = {$id};";
+        $params = [
+            ':cliques'          => $cliques,
+        ];
+
+        $data_base = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $data_base->connect();
+
+        $pdo = $data_base->getConnection();
+        $stmt = $pdo->prepare($insertQuery);
+
+        try {
+            $stmt->execute($params);
+        } catch (\PDOException $exception) {
+            $json = ["code" => 422, "message" => "Não foi possível salvar o registro na tabela. " . $exception->getMessage()];
+            echo json_encode($json);
+            return false;
+        }
+
+        return !empty($btnObject?->id) ? $btnObject->id : $pdo->lastInsertId();
+    }
 }

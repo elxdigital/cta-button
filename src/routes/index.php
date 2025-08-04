@@ -24,6 +24,11 @@ switch ($route) {
         var_dump($_POST);exit;
 
         break;
+    case 'forms/padrao/enviar':
+        $contato = new \Elxdigital\CtaButton\Domain\Contato();
+        $contato->email($_POST);
+
+        break;
     default:
         http_response_code(404);
         echo json_encode(['error' => 'Rota não encontrada']);

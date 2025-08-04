@@ -118,3 +118,80 @@ function string_slug(string $raw_string): string
 
     return $slug;
 }
+
+function is_email(string $email): bool
+{
+    $filter = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if ($filter) {
+        $data = $email;
+        $format = '/[a-z0-9_\.\-]+@[a-z0-9_\.\-]*[a-z0-9_\.\-]+\.[a-z]{2,4}$/';
+
+        if (preg_match($format, $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return false;
+}
+
+/**
+ * @param string $val
+ * @param string $mask (Ex.: ###.###.###-##)
+ * @return string
+ */
+function str_mask(string $val, string $mask): string
+{
+    $maskared = '';
+    $k = 0;
+    for ($i = 0; $i < (strlen($mask)); $i++) {
+        if ($mask[$i] == '#') {
+            if (isset ($val[$k])) {
+                $maskared .= $val[$k];
+                $k++;
+            }
+        } else {
+            if (isset ($mask[$i])) {
+                $maskared .= $mask[$i];
+            }
+        }
+    }
+    return $maskared;
+}
+
+function str_phone(string $phone): ?string
+{
+    $tel = preg_replace("/[^0-9]/", "", $phone);
+
+    if (!strlen($tel) == '10' || !strlen($tel) == '11') {
+        return null;
+    }
+
+    if (!empty ($tel)) {
+        $zero = substr($tel, 0, 1);
+        if ($zero == '0') {
+            $tel = substr($tel, 1);
+        }
+
+        $ddd = substr($tel, 0, 2);
+        $numero = substr($tel, 2);
+
+        $primeiroNumero = substr($numero, 0, 1);
+        if ($primeiroNumero == '9' || $primeiroNumero == '8') {
+            if (strlen($numero) == '8') {
+                $numero = '9' . $numero;
+            }
+        }
+
+        $tel = $ddd . $numero;
+
+        if (strlen($tel) == '10') {
+            return str_mask($tel, '(##) ####-####');
+        } else if (strlen($tel) == '11') {
+            return str_mask($tel, '(##) #####-####');
+        } else {
+            return null;
+        }
+    }
+    return null;
+}

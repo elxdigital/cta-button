@@ -12,16 +12,26 @@ $button = new \Elxdigital\CtaButton\Domain\Button($btn_conversao);
 echo $button->getFunction($arrayClasses, $span);
 
 if ($hasModal && !empty($form)) {
-    $dir = __DIR__;
+    $url = getFullUrl();
 
     echo <<<HTML
-        <script rel="text/javascript" src="{$dir}/../src/template/assets/script_public.js" defer></script>
-        <link rel="stylesheet" href="{$dir}/../src/template/assets/style_public.css">
+        <script rel="text/javascript" src="{$url}/src/template/assets/script_public.js" defer></script>
+        <link rel="stylesheet" href="{$url}/src/template/assets/style_public.css">
+
+        <div id="form-{$button->getBtnIdentificador()}" class="modal-button-cta wrap-modal">
+            <div class="overlay-modal"></div>
+            <div class="box-modal">
+                <button class="close-modal"><span class="material-symbols-outlined">X</span></button>
+                <div class="box-title">
+                    <h2>{$button->getBtnTitulo()}</h2>
+                </div>
         
-        <div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:9998;"></div>
-        <div id="form-{$button->getBtnIdentificador()}" class="modal-button-cta" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; padding:2rem; border-radius:10px; box-shadow:0 2px 20px #333; z-index:9999; min-width:320px;">
-            <button class="fecharModal" style="position:absolute; top:10px; right:10px; font-size:1.5em; background:transparent; border:none; cursor:pointer;">&times;</button>
-            {$form}
+                <div class="row">
+                    <div class="col-xl-12">
+                        {$form}
+                    </div>
+                </div>
+            </div>
         </div>
     HTML;
 }

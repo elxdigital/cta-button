@@ -14,12 +14,20 @@ class ButtonController
 
         $model = new \Elxdigital\CtaButton\Model\Button();
         $btn_conversao = $model->get($btn_id);
-        $hasModal = $btn_conversao->tipo_cta == "lead";
+        $hasModal = ($btn_conversao->tipo_cta == "lead" || $btn_conversao->tipo_cta == "lead_whatsapp");
 
         $form = null;
         if ($hasModal && !empty($templates_path)) {
-            $view_path = new \Elxdigital\CtaButton\View\View($templates_path);
-            $form = $view_path->render("forms/{$btn_conversao->form_lead}", []);
+            if ($btn_conversao->tipo_cta == "lead_whatsapp") {
+                $form = $this->view->render("forms/{$btn_conversao->form_lead}", [
+                    "modalId" => "form-{$btn_conversao->btn_identificador}",
+                    "modalTitle" => $btn_conversao->btn_titulo,
+                    "btn_id" => $btn_id,
+                ]);
+            } else {
+                $view_path = new \Elxdigital\CtaButton\View\View($templates_path);
+                $form = $view_path->render("forms/{$btn_conversao->form_lead}", []);
+            }
         }
 
         echo $this->view->render('public', [

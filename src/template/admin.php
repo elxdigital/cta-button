@@ -64,7 +64,7 @@ $script_path = getFullUrl("src/template/assets/script_admin.js");
                 </div>
 
                 <div class="form-group has-float-label" id="message_wpp_div">
-                    <label for="message_wpp">Texto da Mensagem</label>
+                    <label for="message_wpp">Texto da Mensagem (opcional)</label>
                     <input type="text" class="form-control" id="message_wpp" name="message_wpp"
                            value="<?= !empty($btn_conversao?->message_wpp) ? rawurldecode($btn_conversao->message_wpp) : null ?>">
                     <p class="text-muted">Limite de 255 caracteres</p>

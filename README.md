@@ -6,6 +6,8 @@ Esta dependência foi criada para otimizar a alta frequência de uso em projetos
 * ext-pdo
 * league/plates 3.*
 * ext-mbstring
+* phpmailer/phpmailer
+* vlucas/phpdotenv
 * jQuery e jQuery Mask
 * Bootstrap 4
 * Se já criada a tabela `cta_button`, é indiscutível que tenha, pelo menos, os seguintes campos:
@@ -13,7 +15,7 @@ Esta dependência foi criada para otimizar a alta frequência de uso em projetos
 ```
 id - identificador do registro
 btn_identificador - um identificador único para o botão
-tipo_cta - lead, whatsapp ou externo
+tipo_cta - lead e whatsapp, somente lead, somente whatsapp ou externo
 btn_titulo - título a ser visualizado no botão
 form_lead - formulário que abrirá para preencher leads
 contato_wpp - contato do WhatsApp a ser chamado
@@ -32,6 +34,15 @@ cliques - número de cliques no botão
     * CONF_DB_USER - database user
     * CONF_DB_PASS - database password
     * CONF_DB_PORT - database port
+  * email:
+    * CONF_MAIL_HOST - mail host
+    * CONF_MAIL_PORT - mail port
+    * CONF_MAIL_USER - mail user
+    * CONF_MAIL_PASS - mail password
+    * CONF_MAIL_SENDER_NAME - nome para endereço de e-mail
+    * CONF_MAIL_SENDER_ADDRESS - endereço de e-mail 
+    * CONF_MAIL_TEST_NAME - nome para endereço de e-mail de testes
+    * CONF_MAIL_TEST_ADDRESS - endereço de e-mail de testes
 
 ## Recurosos disponíveis:
 Campo de formulário HTML do tipo 'select' com as seguintes opções:
@@ -40,6 +51,12 @@ Campo de formulário HTML do tipo 'select' com as seguintes opções:
 * Redirecionamento para Link Externo
 
 ## Qual é o objetivo de cada um deles?
+### ✔️ Formulário para Captura de Leads + Redirecionamento para WhatsApp
+Vista abrir uma modal com um formulário de lead, onde o usuário do site preenche seus dados e, após preencher o
+formulário e enviar, redirecionar o usuário para uma conversa do WhatsApp.
+
+* **Campos preenchidos**: número do contato do WhatsApp e (opcional) mensagem a ser enviada na conversa.
+
 ### ✔️ Formulário para Captura de Leads
 Vista abrir uma modal com um formulário de lead, onde o usuário do site preenche seus dados, ficando
 a responsabilidade do destino ou manipulação dos dados a cargo do sistema.
@@ -49,7 +66,7 @@ a responsabilidade do destino ou manipulação dos dados a cargo do sistema.
 ### ✔️ Redirecionamento Direto para WhatsApp
 Vista redirecionar o usuário, sem nenhum tipo de intermediação, para uma conversa do WhatsApp.
 
-* **Campos preenchidos**: contato do WhatsApp.
+* **Campos preenchidos**: contato do WhatsApp e (opcional) mensagem a ser enviada na conversa.
 
 ### ✔️ Redirecionamento para Link Externo
 Vista redirecionar o usuário para um link de página interna (do próprio site) ou externa.
@@ -102,7 +119,7 @@ Copiar arquivo de rotas para acesso público: <br>
 ```php
     CREATE TABLE cta_button (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      tipo_cta ENUM('lead', 'whatsapp', 'externo') NOT NULL,
+      tipo_cta ENUM('lead_whatsapp', 'lead', 'whatsapp', 'externo') NOT NULL,
       btn_identificador VARCHAR(255) NOT NULL,
       btn_titulo VARCHAR(255) NOT NULL,
       form_lead TEXT DEFAULT NULL,

@@ -23,6 +23,15 @@ $(document).ready(function () {
     let tipo_cta_selecionado = $("#tipo_cta").val();
 
     switch (tipo_cta_selecionado) {
+        case 'lead_whatsapp':
+            // esconde e remove valor de campos que não são iniciados
+            $("#form_lead").val("padrao_wpp").trigger('change');
+            $("#form_lead_div").hide();
+
+            $("#link_redir").val("");
+            $("#link_redir_div").hide();
+
+            break;
         case 'lead':
             // esconde e remove valor de campos que não são iniciados
             $("#contato_wpp").val("");
@@ -74,6 +83,19 @@ $(document).ready(function () {
         let selecionado = $(this).val();
 
         switch (selecionado) {
+            case 'lead_whatsapp':
+                // mostrar campos necessários
+                $("#contato_wpp_div").show();
+                $("#message_wpp_div").show();
+
+                // esconde e remove valor de campos que não são iniciados
+                $("#form_lead").val("padrao_wpp").trigger('change');
+                $("#form_lead_div").hide();
+
+                $("#link_redir").val("");
+                $("#link_redir_div").hide();
+
+                break;
             case 'lead':
                 // mostrar campos necessários
                 $("#form_lead_div").show();

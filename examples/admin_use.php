@@ -1,7 +1,7 @@
 <?php
-require "../vendor/autoload.php";
-require_once "dep/dependencias.php";
-require_once "dep/set-variables.php";
+require __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/dep/dependencias.php";
+require_once __DIR__ . "/../src/dep/set-variables.php";
 
 $button = new \Elxdigital\CtaButton\Button();
 

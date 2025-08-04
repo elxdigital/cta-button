@@ -30,14 +30,22 @@ class Button
         $content_str = $span ? "<span>" . $this->getBtnTitulo() . "</span>" : $this->getBtnTitulo();
 
         switch ($funcao) {
+            case 'lead_whatsapp':
+                $identificador = $this->getBtnIdentificador();
+
+                $html = "<a href='#form-{$identificador}' {$attr_str}><i class='fa-brands fa-whatsapp'></i> {$content_str}</a>";
+
+                break;
             case "lead":
-                $html = "<a href='#form-" . $this->getBtnIdentificador() . "' {$attr_str}>{$content_str}</a>";
+                $identificador = $this->getBtnIdentificador();
+
+                $html = "<a href='#form-{$identificador}' {$attr_str}>{$content_str}</a>";
 
                 break;
             case "whatsapp":
+                $contatoWpp = $this->getContatoWpp();
                 $msg = $this->getMessageWpp();
                 $msgWpp = !empty($msg) ? ("&text={$msg}") : "";
-                $contatoWpp = $this->getContatoWpp();
 
                 $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str}><i class='fa-brands fa-whatsapp'></i> {$content_str}</a>";
 
