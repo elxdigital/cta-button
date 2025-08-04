@@ -32,7 +32,6 @@ $(document).ready(function () {
 
 $("form[class='cta-button-form-lead-wpp']").submit(function (e) {
     e.preventDefault();
-    alert('disparado');
 
     var form = $(this);
     var flashClass = "ajax_response";

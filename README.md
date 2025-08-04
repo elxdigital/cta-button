@@ -87,6 +87,12 @@ Adicionar dependência ao projeto: <br>
 Copiar arquivos de estilo/script para acesso público: <br>
 `cp -r vendor/elxdigital/cta-button/src/template/assets src/template/assets`
 
+Copiar formulário de lead padrão para acesso público: <br>
+`cp -r vendor/elxdigital/cta-button/src/template/forms src/template/forms`
+
+Copiar template de e-mail para acesso público: <br>
+`cp -r vendor/elxdigital/cta-button/src/template/shared src/template/shared`
+
 Copiar arquivo de rotas para acesso público: <br>
 `cp -r vendor/elxdigital/cta-button/src/routes src/routes`
 
