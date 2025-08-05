@@ -6,31 +6,28 @@
  * @var array $tipos_conversao
  * @var array $formularios
  */
-
-$script_path = getFullUrl("src/template/assets/script_admin.js");
 ?>
-<script rel="text/javascript" src="<?= $script_path ?>" defer></script>
 
-<div id="btn_form">
+<div id="btn_form_<?= $btn_identificador ?>">
     <div class="card mb-4">
         <div class="card-body">
             <div class="col-lg-12">
                 <h5 class='mb-4'>Botão de CTA</h5>
 
                 <?php if (!empty($btn_conversao)): ?>
-                    <input type="hidden" name="id" id="id" value="<?= $btn_conversao->id ?>">
+                    <input type="hidden" name="id" id="id_<?= $btn_identificador ?>" value="<?= $btn_conversao->id ?>">
                 <?php endif; ?>
 
-                <input type="hidden" name="btn_identificador" id="btn_identificador" value="<?= $btn_identificador ?>">
+                <input type="hidden" name="btn_identificador" id="btn_identificador_<?= $btn_identificador ?>" value="<?= $btn_identificador ?>">
 
                 <div class="form-group has-float-label">
                     <label for="btn_titulo">Título do Botão</label>
-                    <input type="text" class="form-control" id="btn_titulo" name="btn_titulo"
+                    <input type="text" class="form-control" id="btn_titulo_<?= $btn_identificador ?>" name="btn_titulo"
                            value="<?= !empty($btn_conversao?->btn_titulo) ? $btn_conversao->btn_titulo : null ?>">
                 </div>
 
                 <label class="form-group has-float-label mt-3" style="display: block;">
-                    <select name="tipo_cta" id="tipo_cta" class="form-control select2-single">
+                    <select name="tipo_cta" id="tipo_cta_<?= $btn_identificador ?>" data-ident="<?= $btn_identificador ?>" class="form-control select2-single select_tipo_cta">
                         <option value=" ">Selecione um Tipo de Conversão</option>
 
                         <?php foreach ($tipos_conversao as $tipo => $conv): ?>
@@ -44,8 +41,8 @@ $script_path = getFullUrl("src/template/assets/script_admin.js");
                 <!-- --------------------------------------------------------------------- -->
                 <!-- campos condicionais -->
 
-                <label class="form-group has-float-label mt-3" style="display: block;" id="form_lead_div">
-                    <select name="form_lead" id="form_lead" class="form-control select2-single">
+                <label class="form-group has-float-label mt-3" style="display: block;" id="form_lead_div_<?= $btn_identificador ?>">
+                    <select name="form_lead" id="form_lead_<?= $btn_identificador ?>" class="form-control select2-single">
                         <option value=" ">Selecione um Formulário para Conversão</option>
 
                         <?php foreach ($formularios as $tipo_form => $formulario): ?>
@@ -56,23 +53,23 @@ $script_path = getFullUrl("src/template/assets/script_admin.js");
                     <span>Formulário para Conversão de Lead</span>
                 </label>
 
-                <div class="form-group has-float-label" id="contato_wpp_div">
+                <div class="form-group has-float-label" id="contato_wpp_div_<?= $btn_identificador ?>">
                     <label for="contato_wpp">Número do WhatsApp</label>
-                    <input type="text" class="form-control telefone" id="contato_wpp" name="contato_wpp"
+                    <input type="text" class="form-control telefone" id="contato_wpp_<?= $btn_identificador ?>" name="contato_wpp"
                            value="<?= !empty($btn_conversao?->contato_wpp) ? $btn_conversao->contato_wpp : null ?>">
                     <p class="text-muted">Número de telefone com DDD. Ex: (51) 99999-9999</p>
                 </div>
 
-                <div class="form-group has-float-label" id="message_wpp_div">
+                <div class="form-group has-float-label" id="message_wpp_div_<?= $btn_identificador ?>">
                     <label for="message_wpp">Texto da Mensagem (opcional)</label>
-                    <input type="text" class="form-control" id="message_wpp" name="message_wpp"
+                    <input type="text" class="form-control" id="message_wpp_<?= $btn_identificador ?>" name="message_wpp"
                            value="<?= !empty($btn_conversao?->message_wpp) ? rawurldecode($btn_conversao->message_wpp) : null ?>">
                     <p class="text-muted">Limite de 255 caracteres</p>
                 </div>
 
-                <div class="form-group has-float-label" id="link_redir_div">
+                <div class="form-group has-float-label" id="link_redir_div_<?= $btn_identificador ?>">
                     <label for="link_redir">Link de Redirecionamento</label>
-                    <input type="text" class="form-control" id="link_redir" name="link_redir"
+                    <input type="text" class="form-control" id="link_redir_<?= $btn_identificador ?>" name="link_redir"
                            value="<?= !empty($btn_conversao?->link_redir) ? $btn_conversao->link_redir : null ?>">
                 </div>
 
@@ -80,10 +77,10 @@ $script_path = getFullUrl("src/template/assets/script_admin.js");
                 <!-- --------------------------------------------------------------------- -->
             </div>
 
-            <button type="button" id="btn_save_btn_cta" class="btn btn-success mb-1">Salvar Botão</button>
+            <button type="button" id="btn_save_btn_cta_<?= $btn_identificador ?>" data-ident="<?= $btn_identificador ?>" class="btn_save_btn_cta btn btn-success mb-1">Salvar Botão</button>
         </div>
     </div>
 </div>
 
-<input type="hidden" name="<?= $field_name ?>" id="btn_cta_id" value="<?= !empty($btn_conversao) ? $btn_conversao->id : '' ?>">
+<input type="hidden" name="<?= $field_name ?>" id="btn_cta_id_<?= $btn_identificador ?>" value="<?= !empty($btn_conversao) ? $btn_conversao->id : '' ?>">
 <br>

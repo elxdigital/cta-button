@@ -15,9 +15,6 @@ if ($hasModal && !empty($form)) {
     $url = getFullUrl();
 
     echo <<<HTML
-        <script rel="text/javascript" src="{$url}/src/template/assets/script_public.js" defer></script>
-        <link rel="stylesheet" href="{$url}/src/template/assets/style_public.css">
-
         <div id="form-{$button->getBtnIdentificador()}" class="modal-button-cta wrap-modal">
             <div class="overlay-modal"></div>
             <div class="box-modal">

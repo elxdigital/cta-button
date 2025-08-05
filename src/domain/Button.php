@@ -16,9 +16,13 @@ class Button
         $funcao = $this->getTipoCta();
 
         if (!empty($arrayClasses["class"])) {
-            $arrayClasses["class"] .= " btn-border open-modal-button-cta";
+            $arrayClasses["class"] .= " btn-border";
         } else {
-            $arrayClasses["class"] = "btn-border open-modal-button-cta";
+            $arrayClasses["class"] = "btn-border";
+        }
+
+        if ($funcao == 'lead_whatsapp' || $funcao == 'lead') {
+            $arrayClasses["class"] .= " open-modal-button-cta";
         }
 
         $attr_str = implode(' ', array_map(

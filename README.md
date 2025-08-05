@@ -96,6 +96,17 @@ Copiar template de e-mail para acesso público: <br>
 Copiar arquivo de rotas para acesso público: <br>
 `cp -r vendor/elxdigital/cta-button/src/routes src/routes`
 
+Onde você carrega seus estilos e scripts públicos, terá que adicionar o seguinte (adaptando a url oficial de seu site):
+```html
+<script rel="text/javascript" src="{$url}/src/template/assets/script_public.js" defer></script>
+<link rel="stylesheet" href="{$url}/src/template/assets/style_public.css">
+```
+
+Da mesma forma, no lugar onde carrega os estilos e scripts da parte administrativa do site, deverá ter o seguinte:
+```html
+<script rel="text/javascript" src="{url}/src/template/assets/script_admin.js" defer></script>
+```
+
 ### Parte do Painel Administrativo (admin):
 * `Button` - Instanciar a classe principal.
   * Ex.: `new \Elxdigital\CtaButton\Button();`
