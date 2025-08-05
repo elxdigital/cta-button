@@ -89,7 +89,6 @@ $(document).ready(function () {
     $(".select_tipo_cta").on('change', function () {
         let selecionado = $(this).val();
         let identificador = $(this).data("ident");
-        alert(identificador);
 
         switch (selecionado) {
             case 'lead_whatsapp':

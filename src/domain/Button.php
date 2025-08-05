@@ -31,13 +31,19 @@ class Button
             $arrayClasses
         ));
 
+        if ($funcao == 'lead_whatsapp' || $funcao == 'whatsapp') {
+            $titulo = $this->getBtnTitulo();
+            $newTitulo = "<i class='fa-brands fa-whatsapp'></i> {$titulo}";
+            $this->setBtnTitulo($newTitulo);
+        }
+
         $content_str = $span ? "<span>" . $this->getBtnTitulo() . "</span>" : $this->getBtnTitulo();
 
         switch ($funcao) {
             case 'lead_whatsapp':
                 $identificador = $this->getBtnIdentificador();
 
-                $html = "<a href='#form-{$identificador}' {$attr_str}><i class='fa-brands fa-whatsapp'></i> {$content_str}</a>";
+                $html = "<a href='#form-{$identificador}' {$attr_str}>{$content_str}</a>";
 
                 break;
             case "lead":
@@ -51,7 +57,7 @@ class Button
                 $msg = $this->getMessageWpp();
                 $msgWpp = !empty($msg) ? ("&text={$msg}") : "";
 
-                $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str}><i class='fa-brands fa-whatsapp'></i> {$content_str}</a>";
+                $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str}>{$content_str}</a>";
 
                 break;
             case "externo":
@@ -83,6 +89,11 @@ class Button
     public function getBtnTitulo(): string
     {
         return $this->button_cta->btn_titulo;
+    }
+
+    public function setBtnTitulo(string $btn_titulo): void
+    {
+        $this->button_cta->btn_titulo = $btn_titulo;
     }
 
     public function getContatoWpp(): string
