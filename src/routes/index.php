@@ -20,6 +20,15 @@ switch ($route) {
         }
 
         break;
+    case 'button/click/save':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $button = new \Elxdigital\CtaButton\Controller\ButtonController();
+            $button->saveClique($_POST);
+        } else {
+            echo "Método não permitido!";
+        }
+
+        break;
     case 'forms/pai/save':
         var_dump($_POST);exit;
 

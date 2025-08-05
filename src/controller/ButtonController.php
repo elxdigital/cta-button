@@ -81,4 +81,15 @@ class ButtonController
         echo json_encode($json);
         return;
     }
+
+    public function saveClique(array $data)
+    {
+        $data['btn_identificador'] = filter_var($data["btn_identificador"], FILTER_SANITIZE_SPECIAL_CHARS);
+
+        $model = new \Elxdigital\CtaButton\Model\Button();
+        $botao = $model->getByIdentificador($data["btn_identificador"]);
+        var_dump($botao);exit;
+
+        $model->addClique($botao->id);
+    }
 }

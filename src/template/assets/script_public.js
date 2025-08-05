@@ -84,3 +84,10 @@ $(".btn-send-form-cta-button").on('click', function (e) {
         }
     });
 });
+
+$(".button-cta-clicked").on("click", function () {
+    let urlBase = $(this).data('url');
+    let identificador = $(this).data('identificador');
+
+    $.post(urlBase + '/src/routes/index.php?route=button/click/save', {btn_identificador: identificador});
+});

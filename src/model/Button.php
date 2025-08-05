@@ -25,6 +25,20 @@ class Button
         return (object) $result->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getByIdentificador(string $identificador): object
+    {
+        $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $conexao->connect();
+        $banco_de_dados = $conexao->getConnection();
+
+        $result = $banco_de_dados->prepare("SELECT * FROM `cta_button` WHERE btn_identificador = :btn_identificador");
+        $result->execute([
+            ':btn_identificador' => $identificador,
+        ]);
+
+        return (object) $result->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function save(array $data): bool|int
     {
         if (empty($data["btn_identificador"])) {
