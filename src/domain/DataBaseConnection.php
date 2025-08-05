@@ -69,12 +69,13 @@ class DataBaseConnection
 
         $sql = "
             CREATE TABLE IF NOT EXISTS cta_button (
-              id INT AUTO_INCREMENT PRIMARY KEY,
-              tipo_cta ENUM('lead', 'whatsapp', 'externo') NOT NULL,
+              id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+              tipo_cta ENUM('lead_whatsapp', 'lead', 'whatsapp', 'externo') NOT NULL,
               btn_identificador VARCHAR(255) NOT NULL,
               btn_titulo VARCHAR(255) NOT NULL,
               form_lead TEXT DEFAULT NULL,
               contato_wpp VARCHAR(20) DEFAULT NULL,
+              message_wpp VARCHAR(255) DEFAULT NULL,
               link_redir TEXT DEFAULT NULL,
               cliques INT UNSIGNED NOT NULL DEFAULT 0,
               data_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
