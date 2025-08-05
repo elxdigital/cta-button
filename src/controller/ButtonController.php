@@ -88,7 +88,6 @@ class ButtonController
 
         $model = new \Elxdigital\CtaButton\Model\Button();
         $botao = $model->getByIdentificador($data["btn_identificador"]);
-        var_dump($botao);exit;
 
         $model->addClique($botao->id);
     }
