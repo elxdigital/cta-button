@@ -24,7 +24,7 @@
         <input type="email" name="email" required>
     </div>
 
-    <button type="submit" class="btn btn-default">
+    <button type="button" class="btn btn-default btn-success btn-send-form-cta-button">
         <span><i class='fa-brands fa-whatsapp'></i> CONVERSAR</span>
     </button>
 </form>

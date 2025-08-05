@@ -25,7 +25,7 @@ $(document).ready(function () {
     switch (tipo_cta_selecionado) {
         case 'lead_whatsapp':
             // esconde e remove valor de campos que não são iniciados
-            $("#form_lead").val("padrao_wpp").trigger('change');
+            $("#form_lead").val("padrao").trigger('change');
             $("#form_lead_div").hide();
 
             $("#link_redir").val("");
@@ -89,7 +89,7 @@ $(document).ready(function () {
                 $("#message_wpp_div").show();
 
                 // esconde e remove valor de campos que não são iniciados
-                $("#form_lead").val("padrao_wpp").trigger('change');
+                $("#form_lead").val("padrao").trigger('change');
                 $("#form_lead_div").hide();
 
                 $("#link_redir").val("");

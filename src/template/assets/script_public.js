@@ -30,17 +30,28 @@ $(document).ready(function () {
     });
 });
 
-$("form[class='cta-button-form-lead-wpp']").submit(function (e) {
+$(".btn-send-form-cta-button").on('click', function (e) {
     e.preventDefault();
 
-    var form = $(this);
-    var flashClass = "ajax_response";
-    var flash = $("." + flashClass);
+    var load = $(".ajax_load");
+    var form = $(".cta-button-form-lead-wpp");
 
     form.ajaxSubmit({
         url: form.attr("action"),
         type: "POST",
         dataType: "json",
+        beforeSend: function () {
+            load.fadeIn(200).css("display", "flex");
+        },
+        uploadProgress: function (event, position, total, completed) {
+            var loaded = completed;
+            var load_title = $(".ajax_load_box_title");
+            load_title.text("Enviando (" + loaded + "%)");
+
+            if (completed >= 100) {
+                load_title.text("Aguarde, carregando...");
+            }
+        },
         success: function (response) {
             //redirect
             if (response.redirect) {
@@ -60,56 +71,7 @@ $("form[class='cta-button-form-lead-wpp']").submit(function (e) {
 
             //message
             if (response.message) {
-                ajaxMessage(response.message, ajaxResponseBaseTime);
-            }
-
-            if (response.messagedesk) {
-                if (flash.length) {
-                    flash.html(response.messagedesk).fadeIn(100).effect("bounce", 300);
-                } else {
-                    form.prepend("<div class='" + flashClass + "'>" + response.messagedesk + "</div>")
-                        .find("." + flashClass).effect("bounce", 300);
-                }
-            }
-
-            //text
-            if (response.html) {
-                $('.' + response.html[0]).html(response.html[1]);
-            }
-
-            //text
-            if (response.html2) {
-                $('.' + response.html2[0]).html(response.html2[1]);
-            }
-
-            if (response.chat) {
-                var list = "";
-                var chatAppScroll;
-
-                $.each(response.chat, function (item, data) {
-                    list += mensageHtmlUsuario(data.foto, data.nome, data.hora, data.mensagem, data.class);
-                });
-
-                $(".mensagens").html(list);
-                $(".j_mensagem").val("");
-
-                $(".scroll").each(function () {
-                    if ($(this).parents(".chat-app").length > 0) {
-                        chatAppScroll = new PerfectScrollbar($(this)[0]);
-                        $(".chat-app .scroll").scrollTop(
-                            $(".chat-app .scroll").prop("scrollHeight")
-                        );
-                        chatAppScroll.update();
-                        return;
-                    }
-                    var ps = new PerfectScrollbar($(this)[0]);
-                });
-            }
-
-            //image by fsphp mce upload
-            if (response.mce_image) {
-                $('.mce_upload').fadeOut(200);
-                tinyMCE.activeEditor.insertContent(response.mce_image);
+                ajaxMessage(response.message, 5);
             }
         },
         complete: function () {

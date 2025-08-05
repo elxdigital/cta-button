@@ -6,6 +6,30 @@ class Contato
 {
     public function email(array $data): void
     {
+        if (empty($data['nome'])) {
+            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo nome para continuar!")->render();
+            echo json_encode($json);
+            return;
+        }
+
+        if (empty($data['telefone'])) {
+            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo telefone para continuar!")->render();
+            echo json_encode($json);
+            return;
+        }
+
+        if (empty($data['email'])) {
+            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo e-mail para continuar!")->render();
+            echo json_encode($json);
+            return;
+        }
+
+        if (empty($data['btn_id'])) {
+            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa identificar o botão para continuar!")->render();
+            echo json_encode($json);
+            return;
+        }
+
         $data['nome'] = ucwords(mb_strtolower(trim($data['nome']), 'UTF-8'));
         $data['telefone'] = trim(get_str_phone($data['telefone']));
         $data['email'] = mb_strtolower(trim($data['email']), 'UTF-8');
