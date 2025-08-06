@@ -174,10 +174,8 @@ $(document).ready(function () {
         });
 
         var origin = window.location.origin;
-        var path = window.location.pathname.split('/').filter(Boolean)[0];
-        var baseUrl = origin + '/' + path;
 
-        $.post(baseUrl + '/src/routes/index.php?route=button/save', dadosFilho)
+        $.post(origin + '/src/routes/index.php?route=button/save', dadosFilho)
             .done(function(resposta) {
                 let resp = JSON.parse(resposta);
 
