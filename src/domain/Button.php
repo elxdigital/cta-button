@@ -11,7 +11,7 @@ class Button
         $this->button_cta = $button;
     }
 
-    public function getFunction(array $arrayClasses, bool $span): string
+    public function getFunction(array $arrayClasses, bool $span, string $content_before, string $content_after): string
     {
         $funcao = $this->getTipoCta();
 
@@ -46,7 +46,7 @@ class Button
         switch ($funcao) {
             case "lead_whatsapp":
             case "lead":
-                $html = "<a href='#form-{$identificador}' {$attr_str} data-url='{$urlBase}' data-identificador='{$identificador}'>{$content_str}</a>";
+                $html = "<a href='#form-{$identificador}' {$attr_str} data-url='{$urlBase}' data-identificador='{$identificador}'>{$content_before}{$content_str}{$content_after}</a>";
 
                 break;
             case "whatsapp":
@@ -54,14 +54,14 @@ class Button
                 $msg = $this->getMessageWpp();
                 $msgWpp = !empty($msg) ? ("&text={$msg}") : "";
 
-                $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str} data-url='{$urlBase}' data-identificador='{$identificador}'>{$content_str}</a>";
+                $html = "<a href='https://api.whatsapp.com/send/?phone=55{$contatoWpp}{$msgWpp}' target='_blank' {$attr_str} data-url='{$urlBase}' data-identificador='{$identificador}'>{$content_before}{$content_str}{$content_after}</a>";
 
                 break;
             case "externo":
                 $target_blank = openOnNewWindow($this->getLinkRedir()) ? "target='_blank'" : "";
                 $url_redirect = seeFullUrl($this->getLinkRedir());
 
-                $html = "<a href='{$url_redirect}' {$target_blank} {$attr_str} data-url='{$urlBase}' data-identificador='{$identificador}'>{$content_str}</a>";
+                $html = "<a href='{$url_redirect}' {$target_blank} {$attr_str} data-url='{$urlBase}' data-identificador='{$identificador}'>{$content_before}{$content_str}{$content_after}</a>";
 
                 break;
             default:

@@ -8,7 +8,7 @@ class ButtonController
 
     public function __construct() {}
 
-    public function render_public(int $btn_id, array $arrayClasses, bool $span, ?string $templates_path = null): void
+    public function render_public(int $btn_id, array $arrayClasses, bool $span, ?string $templates_path, string $content_before, string $content_after): void
     {
         $this->view = new \Elxdigital\CtaButton\View\View(__DIR__ . "/../template/");
 
@@ -36,6 +36,8 @@ class ButtonController
             "form" => $form,
             "arrayClasses" => $arrayClasses,
             "span" => $span,
+            "content_before" => $content_before,
+            "content_after" => $content_after,
         ]);
     }
 

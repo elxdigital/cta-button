@@ -1,6 +1,8 @@
 <?php
 /**
  * @var \League\Plates\Template\Template $this
+ * @var string $content_before
+ * @var string $content_after
  * @var object $btn_conversao
  * @var array $arrayClasses
  * @var bool $hasModal
@@ -9,7 +11,7 @@
  */
 
 $button = new \Elxdigital\CtaButton\Domain\Button($btn_conversao);
-echo $button->getFunction($arrayClasses, $span);
+echo $button->getFunction($arrayClasses, $span, $content_before, $content_after);
 
 if ($hasModal && !empty($form)) {
     $url = getFullUrl();
