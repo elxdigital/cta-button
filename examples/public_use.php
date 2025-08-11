@@ -16,6 +16,17 @@ $button = new \Elxdigital\CtaButton\Button(__DIR__);
 
 <html>
     <section>
-        <?php $button->renderPublic($btn_id); ?>
+        <?php $button->renderPublic(
+                $btn_id,
+                [
+                    "class" => "mb-4",
+                ],
+                true,
+                [
+                    "class" => "text",
+                ],
+                "<span class='mb-2'>Span Antes</span>",
+                "<span class='mb-3'>Span Depois</span>"
+        ); ?>
     </section>
 </html>

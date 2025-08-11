@@ -11,26 +11,32 @@ class Button
         $this->button_cta = $button;
     }
 
-    public function getFunction(array $arrayClasses, bool $span, string $content_before, string $content_after): string
+    public function getFunction(array $arrayBtnClasses, bool $span, array $arraySpanClasses, string $content_before, string $content_after): string
     {
         $funcao = $this->getTipoCta();
 
-        if (!empty($arrayClasses["class"])) {
-            $arrayClasses["class"] .= " btn-border";
+        if (!empty($arrayBtnClasses["class"])) {
+            $arrayBtnClasses["class"] .= " btn-border";
         } else {
-            $arrayClasses["class"] = "btn-border";
+            $arrayBtnClasses["class"] = "btn-border";
         }
 
         if ($funcao == 'lead_whatsapp' || $funcao == 'lead') {
-            $arrayClasses["class"] .= " open-modal-button-cta";
+            $arrayBtnClasses["class"] .= " open-modal-button-cta";
         }
 
-        $arrayClasses["class"] .= " button-cta-clicked";
+        $arrayBtnClasses["class"] .= " button-cta-clicked";
 
         $attr_str = implode(' ', array_map(
             fn($k, $v) => "$k='$v'",
-            array_keys($arrayClasses),
-            $arrayClasses
+            array_keys($arrayBtnClasses),
+            $arrayBtnClasses
+        ));
+
+        $span_attr = implode(' ', array_map(
+            fn($k, $v) => "$k='$v'",
+            array_keys($arraySpanClasses),
+            $arraySpanClasses
         ));
 
         if ($funcao == 'lead_whatsapp' || $funcao == 'whatsapp') {
@@ -39,7 +45,7 @@ class Button
             $this->setBtnTitulo($newTitulo);
         }
 
-        $content_str = $span ? "<span>" . $this->getBtnTitulo() . "</span>" : $this->getBtnTitulo();
+        $content_str = $span ? "<span {$span_attr}>" . $this->getBtnTitulo() . "</span>" : $this->getBtnTitulo();
         $identificador = $this->getBtnIdentificador();
         $urlBase = getFullUrl();
 

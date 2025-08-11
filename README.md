@@ -129,8 +129,11 @@ Da mesma forma, no lugar onde carrega os estilos e scripts da parte administrati
 * `renderPublic` - renderiza o botão no site, ou seja, na parte que o usuário final vê.
   * Parâmetro:
     * `btn_cta_id` - id do botão que deseja ser renderizado na tela e acessado pelos usuários do site.
-    * `estilos` (opcional) - array de estilos, com flexibilidade para passar qualquer atributo possível em uma tag \<a> do HTML.
+    * `btn_classes` (opcional) - array de estilos, com flexibilidade para passar qualquer atributo possível em uma tag \<a> do HTML.
     * `span` (opcional) - boolean, se quiser que o conteúdo da tag \<a> seja envolto em uma tag \<span>, por padrão: false.
+    * `span_classes` (opcional) - array de estilos, com flexibilidade para passar qualquer atributo possível no span, se o parâmetro anterior for `true`.
+    * `content_before` (opcional) - string para passar um HTML caso queira adicionar algum conteúdo antes do texto principal do botão.
+    * `content_after` (opcional) - string para passar um HTML caso queira adicionar algum conteúdo depois do texto principal do botão.
 
 ## Tabela de exemplo para cta_button:
 ```php
