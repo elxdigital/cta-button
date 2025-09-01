@@ -41,7 +41,7 @@ class Button
 
         if ($funcao == 'lead_whatsapp' || $funcao == 'whatsapp') {
             $titulo = $this->getBtnTitulo();
-            $newTitulo = "<i class='fa-brands fa-whatsapp'></i> {$titulo}";
+            $newTitulo = "<i class='fa-brands fa-whatsapp'></i>&nbsp;{$titulo}";
             $this->setBtnTitulo($newTitulo);
         }
 
