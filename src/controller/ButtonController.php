@@ -8,7 +8,7 @@ class ButtonController
 
     public function __construct() {}
 
-    public function render_public(int $btn_id, array $arrayBtnClasses, bool $span, ?string $templates_path, array $arraySpanClasses, string $content_before, string $content_after): void
+    public function render_public(int $btn_id, array $arrayBtnClasses, bool $span, ?string $templates_path, array $arraySpanClasses, string $content_before, string $content_after, bool $translate_url): void
     {
         $this->view = new \Elxdigital\CtaButton\View\View(__DIR__ . "/../template/");
 
@@ -39,6 +39,7 @@ class ButtonController
             "span" => $span,
             "content_before" => $content_before,
             "content_after" => $content_after,
+            "translate_url" => $translate_url,
         ]);
     }
 

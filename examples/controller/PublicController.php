@@ -17,7 +17,7 @@ class PublicController
         /**
          * MOCK DE DADOS, PASSE O ID NECESSÁRIO QUE DESEJA CARREGAR NA TELA
          */
-        $btn_id = 14;
+        $btn_id = 11;
 
         /**
          * IMPORTANTE PASSAR O CAMINHO DAS VIEWS DO SISTEMA QUE USARÁ ESTE BOTÃO
@@ -39,8 +39,8 @@ class PublicController
          * PARA ALTERNAR ENTRE TESTES COM OU SEM BOTÃO JÁ CADASTRADO, COMENTE OU DESCOMENTE A VARIÁVEL $data ABAIXO
          */
 
-        $data = null;
-        //$data = (object) ['btn_cta' => 1];
+//        $data = null;
+        $data = (object) ['btn_cta' => 11];
         $forms = ["contato" => "Formulário de Contato", "curriculo" => "Formulário de Currículo", "modal" => "Formulário de Modal"];
 
         echo $this->view->render("admin_use", [

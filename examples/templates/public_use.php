@@ -32,7 +32,8 @@ $this->layout("_template_view", [
                                 "class" => "text",
                             ],
                             "<span class='mb-2'>Span Antes</span>",
-                            "<span class='mb-3'>Span Depois</span>"
+                            "<span class='mb-3'>Span Depois</span>",
+                            true
                         ); ?>
                     </div>
                 </div>

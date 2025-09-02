@@ -11,7 +11,7 @@ class Button
         $this->button_cta = $button;
     }
 
-    public function getFunction(array $arrayBtnClasses, bool $span, array $arraySpanClasses, string $content_before, string $content_after): string
+    public function getFunction(array $arrayBtnClasses, bool $span, array $arraySpanClasses, string $content_before, string $content_after, bool $translate_url): string
     {
         $funcao = $this->getTipoCta();
 
@@ -47,7 +47,7 @@ class Button
 
         $content_str = $span ? "<span {$span_attr}>" . $this->getBtnTitulo() . "</span>" : $this->getBtnTitulo();
         $identificador = $this->getBtnIdentificador();
-        $urlBase = getFullUrl();
+        $urlBase = !$translate_url ? getFullUrl() : urlComTraducao();
 
         switch ($funcao) {
             case "lead_whatsapp":
@@ -65,7 +65,7 @@ class Button
                 break;
             case "externo":
                 $target_blank = openOnNewWindow($this->getLinkRedir()) ? "target='_blank'" : "";
-                $url_redirect = seeFullUrl($this->getLinkRedir());
+                $url_redirect = seeFullUrl($this->getLinkRedir(), $translate_url);
 
                 $html = "<a href='{$url_redirect}' {$target_blank} {$attr_str} data-url='{$urlBase}' data-identificador='{$identificador}'>{$content_before}{$content_str}{$content_after}</a>";
 
