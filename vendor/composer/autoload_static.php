@@ -12,7 +12,6 @@ class ComposerStaticInit1ce56f9279fedaafe230a8cd68058ce8
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '119c5c23b1750c031f50df500a6fe7c3' => __DIR__ . '/../..' . '/src/helper/string.php',
         '2ea6f74a6c5f88e4180ec4409e08780c' => __DIR__ . '/../..' . '/src/helper/url.php',
-        '66433a4d82b3dfe818ade2d4a82c3644' => __DIR__ . '/../..' . '/src/dep/set-variables.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -37,6 +36,7 @@ class ComposerStaticInit1ce56f9279fedaafe230a8cd68058ce8
         ),
         'E' => 
         array (
+            'Elxdigital\\CtaButton\\Examples\\' => 30,
             'Elxdigital\\CtaButton\\' => 21,
         ),
         'D' => 
@@ -73,6 +73,10 @@ class ComposerStaticInit1ce56f9279fedaafe230a8cd68058ce8
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'Elxdigital\\CtaButton\\Examples\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/examples',
         ),
         'Elxdigital\\CtaButton\\' => 
         array (
