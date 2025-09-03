@@ -16,6 +16,7 @@ class Button
         $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
         $banco_de_dados = $conexao->getConnection();
+        $entidade = "cta_button";
 
         if ($translate && (!empty($_SESSION['lang']) && $_SESSION['lang'] != "pt")) {
             $translateFields = $this->getCamposTraduziveis();
@@ -33,20 +34,20 @@ class Button
                     $subJoins[] = "LEFT JOIN translate_schema AS translated_{$field} ON cta_button.id = translated_{$field}.column_index AND translated_{$field}.column_name = '{$field}' AND translated_{$field}.language = '{$_SESSION['lang']}' AND translated_{$field}.table_name = 'cta_button'";
                 }
 
-                $this->setEntity("(SELECT {$subColumns} FROM cta_button " . implode(" ", $subJoins) . ") AS cta_button");
+                $entidade = ("(SELECT {$subColumns} FROM `cta_button` " . implode(" ", $subJoins) . ") AS cta_button");
             }
         }
 
         if (!empty($btn_id)) {
-            $result = $banco_de_dados->prepare("SELECT * FROM `cta_button` WHERE id = :btn_id");
+            $result = $banco_de_dados->prepare("SELECT * FROM {$entidade} WHERE id = :btn_id");
             $result->execute([
                 ':btn_id' => $btn_id,
             ]);
 
-            return (object) $result->fetchObject(static::class);
+            return (object) $result->fetch(PDO::FETCH_ASSOC);
         }
 
-        $result = $banco_de_dados->prepare("SELECT * FROM `cta_button`");
+        $result = $banco_de_dados->prepare("SELECT * FROM {$entidade}");
         $result->execute();
 
         return (array) $result->fetchAll(\PDO::FETCH_CLASS, static::class);
