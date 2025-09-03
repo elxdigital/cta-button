@@ -124,7 +124,31 @@ class Button
             return false;
         }
 
-        return !empty($btnObject?->id) ? $btnObject->id : $pdo->lastInsertId();
+        $id_save = !empty($btnObject?->id) ? $btnObject->id : $pdo->lastInsertId();
+
+        $this->saveTraducoes($id_save);
+
+        return $id_save;
+    }
+
+    public function saveTraducoes(int $id)
+    {
+        if (
+            !empty($this->getCamposTraduziveis())
+        ) {
+            $entidade = "cta_button";
+            $data_base = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+            $data_base->connect();
+            $pdo = $data_base->getConnection();
+
+            $delete_query = "DELETE FROM `translate_queue` WHERE model_name = 'cta_button' AND column_index = :id";
+            $stmt_delete = $pdo->prepare($delete_query);
+            $stmt_delete->execute(["id" => $id]);
+
+            $add_query = "INSERT INTO `translate_queue` (`model_name`, `column_index`) VALUES ('cta_button', {$id})";
+            $stmt_add = $pdo->prepare($add_query);
+            $stmt_add->execute();
+        }
     }
 
     public function addClique(int $id)
@@ -156,13 +180,12 @@ class Button
 
     public function getCamposTraduziveis(): array
     {
-        $query =
-            ("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" . CONF_DB_NAME . "' AND TABLE_NAME = 'cta_button' AND COLUMN_COMMENT LIKE '%@translatable%' ");
-
         $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
-
         $banco_de_dados = $conexao->getConnection();
+        $dbName = $conexao->getDataBaseName();
+
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '{$dbName}' AND TABLE_NAME = 'cta_button' AND COLUMN_COMMENT LIKE '%@translatable%'";
         $stmt = $banco_de_dados->prepare($query);
         $stmt->execute();
 
@@ -171,13 +194,12 @@ class Button
 
     public function getCampos(): array
     {
-        $query =
-            ("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" . CONF_DB_NAME . "' AND TABLE_NAME = 'cta_button'");
-
         $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
-
         $banco_de_dados = $conexao->getConnection();
+        $dbName = $conexao->getDataBaseName();
+
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '{$dbName}' AND TABLE_NAME = 'cta_button'";
         $stmt = $banco_de_dados->prepare($query);
         $stmt->execute();
 

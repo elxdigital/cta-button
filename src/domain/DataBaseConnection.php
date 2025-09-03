@@ -55,6 +55,11 @@ class DataBaseConnection
         return $this->connection;
     }
 
+    public function getDataBaseName(): string
+    {
+        return $this->dbname;
+    }
+
     /**
      * #######################
      * ### PRIVATE METHODS ###
