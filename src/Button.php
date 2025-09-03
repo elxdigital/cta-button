@@ -29,7 +29,7 @@ class Button
      * ######################
      */
 
-    public function renderPublic(int $btn_cta_id, ?array $btn_classes = [], ?bool $span = false, ?array $span_classes = [], ?string $content_before = "", ?string $content_after = "", ?bool $translate_url = false): void
+    public function renderPublic(int $btn_cta_id, ?array $btn_classes = [], ?bool $span = false, ?array $span_classes = [], ?string $content_before = "", ?string $content_after = "", ?bool $translate = false): void
     {
         $btn_id = filter_var($btn_cta_id, FILTER_VALIDATE_INT);
         $arrayBtnClasses = !empty($btn_classes) ? $btn_classes : [];
@@ -37,7 +37,7 @@ class Button
         $templates_path = $this->getPublicTemplatePath();
 
         $controller = new \Elxdigital\CtaButton\Controller\ButtonController();
-        $controller->render_public($btn_id, $arrayBtnClasses, $span, $templates_path, $arraySpanClasses, $content_before, $content_after, $translate_url);
+        $controller->render_public($btn_id, $arrayBtnClasses, $span, $templates_path, $arraySpanClasses, $content_before, $content_after, $translate);
     }
 
     public function renderPrivate(string $field_name, string $identificador, array $formularios, ?int $btn_cta_id = null): void

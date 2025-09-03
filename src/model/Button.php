@@ -11,18 +11,46 @@ class Button
         set_time_limit(0);
     }
 
-    public function get(int $btn_id): object
+    public function get(int $btn_id, ?bool $translate = false): object|array
     {
         $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
         $banco_de_dados = $conexao->getConnection();
+        $entidade = "cta_button";
 
-        $result = $banco_de_dados->prepare("SELECT * FROM `cta_button` WHERE id = :btn_id");
-        $result->execute([
-            ':btn_id' => $btn_id,
-        ]);
+        if ($translate && (!empty($_SESSION['lang']) && $_SESSION['lang'] != "pt")) {
+            $translateFields = $this->getCamposTraduziveis();
 
-        return (object) $result->fetch(PDO::FETCH_ASSOC);
+            if (!empty($translateFields)) {
+                $fields = array_map(function ($field) use ($translateFields) {
+                    $translateField = in_array($field, $translateFields);
+                    return $translateField ? "IFNULL(translated_{$field}.column_value, cta_button.{$field}) AS {$field}" : "cta_button.{$field}";
+                }, $this->getCampos());
+
+                $subJoins = [];
+                $subColumns = implode(", ", $fields);
+
+                foreach ($translateFields as $field) {
+                    $subJoins[] = "LEFT JOIN translate_schema AS translated_{$field} ON cta_button.id = translated_{$field}.column_index AND translated_{$field}.column_name = '{$field}' AND translated_{$field}.language = '{$_SESSION['lang']}' AND translated_{$field}.table_name = 'cta_button'";
+                }
+
+                $entidade = ("(SELECT {$subColumns} FROM `cta_button` " . implode(" ", $subJoins) . ") AS cta_button");
+            }
+        }
+
+        if (!empty($btn_id)) {
+            $result = $banco_de_dados->prepare("SELECT * FROM {$entidade} WHERE id = :btn_id");
+            $result->execute([
+                ':btn_id' => $btn_id,
+            ]);
+
+            return (object) $result->fetch(PDO::FETCH_ASSOC);
+        }
+
+        $result = $banco_de_dados->prepare("SELECT * FROM {$entidade}");
+        $result->execute();
+
+        return (array) $result->fetchAll(\PDO::FETCH_CLASS, static::class);
     }
 
     public function getByIdentificador(string $identificador): object
@@ -124,5 +152,35 @@ class Button
         }
 
         return !empty($btnObject?->id) ? $btnObject->id : $pdo->lastInsertId();
+    }
+
+    public function getCamposTraduziveis(): array
+    {
+        $query =
+            ("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" . CONF_DB_NAME . "' AND TABLE_NAME = 'cta_button' AND COLUMN_COMMENT LIKE '%@translatable%' ");
+
+        $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $conexao->connect();
+
+        $banco_de_dados = $conexao->getConnection();
+        $stmt = $banco_de_dados->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_COLUMN);
+    }
+
+    public function getCampos(): array
+    {
+        $query =
+            ("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '" . CONF_DB_NAME . "' AND TABLE_NAME = 'cta_button'");
+
+        $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $conexao->connect();
+
+        $banco_de_dados = $conexao->getConnection();
+        $stmt = $banco_de_dados->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_COLUMN);
     }
 }

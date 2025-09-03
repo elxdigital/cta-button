@@ -6,14 +6,14 @@
  * @var object $btn_conversao
  * @var array $arrayBtnClasses
  * @var array $arraySpanClasses
- * @var bool $translate_url
+ * @var bool $translate
  * @var bool $hasModal
  * @var string $form
  * @var bool $span
  */
 
 $button = new \Elxdigital\CtaButton\Domain\Button($btn_conversao);
-echo $button->getFunction($arrayBtnClasses, $span, $arraySpanClasses, $content_before, $content_after, $translate_url);
+echo $button->getFunction($arrayBtnClasses, $span, $arraySpanClasses, $content_before, $content_after, $translate);
 ?>
 
 <?php if ($hasModal && !empty($form)): ?>

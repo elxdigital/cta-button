@@ -8,12 +8,12 @@ class ButtonController
 
     public function __construct() {}
 
-    public function render_public(int $btn_id, array $arrayBtnClasses, bool $span, ?string $templates_path, array $arraySpanClasses, string $content_before, string $content_after, bool $translate_url): void
+    public function render_public(int $btn_id, array $arrayBtnClasses, bool $span, ?string $templates_path, array $arraySpanClasses, string $content_before, string $content_after, bool $translate): void
     {
         $this->view = new \Elxdigital\CtaButton\View\View(__DIR__ . "/../template/");
 
         $model = new \Elxdigital\CtaButton\Model\Button();
-        $btn_conversao = $model->get($btn_id);
+        $btn_conversao = $model->get($btn_id, $translate);
         $hasModal = ($btn_conversao->tipo_cta == "lead" || $btn_conversao->tipo_cta == "lead_whatsapp");
 
         $form = null;
@@ -39,7 +39,7 @@ class ButtonController
             "span" => $span,
             "content_before" => $content_before,
             "content_after" => $content_after,
-            "translate_url" => $translate_url,
+            "translate" => $translate,
         ]);
     }
 
