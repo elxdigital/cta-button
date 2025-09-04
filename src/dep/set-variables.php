@@ -25,4 +25,7 @@ if (file_exists($envFile) && class_exists(\Dotenv\Dotenv::class)) {
 !defined("CONF_MAIL_USER") ? define("CONF_MAIL_USER", $_ENV['CONF_MAIL_USER']) : CONF_MAIL_USER;
 !defined("CONF_MAIL_PASS") ? define("CONF_MAIL_PASS", $_ENV['CONF_MAIL_PASS']) : CONF_MAIL_PASS;
 !defined("CONF_MAIL_SENDER") ? define("CONF_MAIL_SENDER", ['name' => $_ENV['CONF_MAIL_SENDER_NAME'], 'address' => $_ENV['CONF_MAIL_SENDER_ADDRESS']]) : CONF_MAIL_SENDER;
-!defined("CONF_MAIL_TEST") ? define("CONF_MAIL_TEST", ['name' => $_ENV['CONF_MAIL_TEST_NAME'], 'address' => $_ENV['CONF_MAIL_TEST_ADDRESS']]) : CONF_MAIL_TEST;
+
+if (empty($_SERVER["HTTP_HOST"]) || $_SERVER["HTTP_HOST"] == "localhost") {
+    !defined("CONF_MAIL_TEST") ? define("CONF_MAIL_TEST", ['name' => $_ENV['CONF_MAIL_TEST_NAME'], 'address' => $_ENV['CONF_MAIL_TEST_ADDRESS']]) : CONF_MAIL_TEST;
+}
