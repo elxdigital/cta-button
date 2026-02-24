@@ -1,6 +1,6 @@
 <?php
 
-namespace Elxdigital\CtaButton\Domain;
+namespace ElxDigital\CtaButton\Domain;
 
 require_once __DIR__ . "/../dep/set-variables.php";
 

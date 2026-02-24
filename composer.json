@@ -12,8 +12,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Elxdigital\\CtaButton\\": "src/",
-            "Elxdigital\\CtaButton\\Examples\\": "examples/"
+            "ElxDigital\\CtaButton\\": "src/",
+            "ElxDigital\\CtaButton\\Examples\\": "examples/"
         },
         "files": [
             "src/helper/string.php",

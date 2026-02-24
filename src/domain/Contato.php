@@ -1,31 +1,31 @@
 <?php
 
-namespace Elxdigital\CtaButton\Domain;
+namespace ElxDigital\CtaButton\Domain;
 
 class Contato
 {
     public function email(array $data): void
     {
         if (empty($data['nome'])) {
-            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo nome para continuar!")->render();
+            $json["message"] = (new \ElxDigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo nome para continuar!")->render();
             echo json_encode($json);
             return;
         }
 
         if (empty($data['telefone'])) {
-            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo telefone para continuar!")->render();
+            $json["message"] = (new \ElxDigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo telefone para continuar!")->render();
             echo json_encode($json);
             return;
         }
 
         if (empty($data['email'])) {
-            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo e-mail para continuar!")->render();
+            $json["message"] = (new \ElxDigital\CtaButton\Domain\Message())->error("Você precisa preencher o campo e-mail para continuar!")->render();
             echo json_encode($json);
             return;
         }
 
         if (empty($data['btn_id'])) {
-            $json["message"] = (new \Elxdigital\CtaButton\Domain\Message())->error("Você precisa identificar o botão para continuar!")->render();
+            $json["message"] = (new \ElxDigital\CtaButton\Domain\Message())->error("Você precisa identificar o botão para continuar!")->render();
             echo json_encode($json);
             return;
         }
@@ -41,7 +41,7 @@ class Contato
             TELEFONE: {$data['telefone']}
         ";
 
-        $view = new \Elxdigital\CtaButton\View\View(__DIR__ . "/../template/shared/views");
+        $view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../template/shared/views");
         $subject = "[ LEAD DO SITE ] Novo lead clicou em um botão !";
 
         $body = $view->render("email", [
@@ -49,7 +49,7 @@ class Contato
             "mensagem" => $mensagem
         ]);
 
-        $email = new \Elxdigital\CtaButton\Domain\Email();
+        $email = new \ElxDigital\CtaButton\Domain\Email();
         $email->bootstrap(
             $subject,
             $body,
@@ -57,7 +57,7 @@ class Contato
             \CONF_MAIL_SENDER["name"]
         )->send($data['email'], $data['nome']);
 
-        $model = new \Elxdigital\CtaButton\Model\Button();
+        $model = new \ElxDigital\CtaButton\Model\Button();
         $btn_conversao = $model->get($data['btn_id']);
 
         $model->addClique($data['btn_id']);

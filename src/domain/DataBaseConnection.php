@@ -1,6 +1,6 @@
 <?php
 
-namespace Elxdigital\CtaButton\Domain;
+namespace ElxDigital\CtaButton\Domain;
 
 use PDO;
 use PDOException;

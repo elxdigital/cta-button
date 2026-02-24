@@ -9,5 +9,5 @@ if ($method != "GET") {
     exit;
 }
 
-$controller = new \Elxdigital\CtaButton\Examples\Controller\PublicController();
+$controller = new \ElxDigital\CtaButton\Examples\Controller\PublicController();
 $controller->public();

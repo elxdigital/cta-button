@@ -1,18 +1,18 @@
 <?php
 
-namespace Elxdigital\CtaButton\Controller;
+namespace ElxDigital\CtaButton\Controller;
 
 class ButtonController
 {
-    private \Elxdigital\CtaButton\View\View $view;
+    private \ElxDigital\CtaButton\View\View $view;
 
     public function __construct() {}
 
     public function render_public(int $btn_id, array $arrayBtnClasses, bool $span, ?string $templates_path, array $arraySpanClasses, string $content_before, string $content_after, bool $translate): void
     {
-        $this->view = new \Elxdigital\CtaButton\View\View(__DIR__ . "/../template/");
+        $this->view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../template/");
 
-        $model = new \Elxdigital\CtaButton\Model\Button();
+        $model = new \ElxDigital\CtaButton\Model\Button();
         $btn_conversao = $model->get($btn_id, $translate);
         $hasModal = ($btn_conversao->tipo_cta == "lead" || $btn_conversao->tipo_cta == "lead_whatsapp");
 
@@ -25,7 +25,7 @@ class ButtonController
                     "btn_id" => $btn_id,
                 ]);
             } else {
-                $view_path = new \Elxdigital\CtaButton\View\View($templates_path);
+                $view_path = new \ElxDigital\CtaButton\View\View($templates_path);
                 $form = $view_path->render("forms/{$btn_conversao->form_lead}", []);
             }
         }
@@ -45,11 +45,11 @@ class ButtonController
 
     public function render_admin(string $field_name, string $btn_identificador, array $formularios, ?int $btn_id, array $tipos_conversao): void
     {
-        $this->view = new \Elxdigital\CtaButton\View\View(__DIR__ . "/../template/");
+        $this->view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../template/");
 
         $btn_conversao = null;
         if (!empty($btn_id)) {
-            $model = new \Elxdigital\CtaButton\Model\Button();
+            $model = new \ElxDigital\CtaButton\Model\Button();
             $btn_conversao = $model->get($btn_id);
         }
 
@@ -72,7 +72,7 @@ class ButtonController
         }
 
         $dataFiltered = filter_var_array($dadosPost, FILTER_SANITIZE_SPECIAL_CHARS);
-        $model = new \Elxdigital\CtaButton\Model\Button();
+        $model = new \ElxDigital\CtaButton\Model\Button();
         $lastId = $model->save($dataFiltered);
 
         if (!$lastId) {
@@ -90,7 +90,7 @@ class ButtonController
     {
         $data['btn_identificador'] = filter_var($data["btn_identificador"], FILTER_SANITIZE_SPECIAL_CHARS);
 
-        $model = new \Elxdigital\CtaButton\Model\Button();
+        $model = new \ElxDigital\CtaButton\Model\Button();
         $botao = $model->getByIdentificador($data["btn_identificador"]);
 
         $model->addClique($botao->id);

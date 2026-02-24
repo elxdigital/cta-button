@@ -13,7 +13,7 @@ if (!$route) {
 switch ($route) {
     case 'button/save':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $button = new \Elxdigital\CtaButton\Controller\ButtonController();
+            $button = new \ElxDigital\CtaButton\Controller\ButtonController();
             $button->saveButton($_POST);
         } else {
             echo "Método não permitido!";
@@ -22,7 +22,7 @@ switch ($route) {
         break;
     case 'button/click/save':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $button = new \Elxdigital\CtaButton\Controller\ButtonController();
+            $button = new \ElxDigital\CtaButton\Controller\ButtonController();
             $button->saveClique($_POST);
         } else {
             echo "Método não permitido!";
@@ -34,7 +34,7 @@ switch ($route) {
 
         break;
     case 'forms/padrao/enviar':
-        $contato = new \Elxdigital\CtaButton\Domain\Contato();
+        $contato = new \ElxDigital\CtaButton\Domain\Contato();
         $contato->email($_POST);
 
         break;

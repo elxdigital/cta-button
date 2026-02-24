@@ -12,7 +12,7 @@
  * @var bool $span
  */
 
-$button = new \Elxdigital\CtaButton\Domain\Button($btn_conversao);
+$button = new \ElxDigital\CtaButton\Domain\Button($btn_conversao);
 echo $button->getFunction($arrayBtnClasses, $span, $arraySpanClasses, $content_before, $content_after, $translate);
 ?>
 

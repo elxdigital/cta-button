@@ -1,6 +1,6 @@
 <?php
 
-namespace Elxdigital\CtaButton\Examples\Controller;
+namespace ElxDigital\CtaButton\Examples\Controller;
 
 class PublicController
 {
@@ -9,7 +9,7 @@ class PublicController
 
     public function __construct()
     {
-        $this->view = new \Elxdigital\CtaButton\View\View($this->view_path);
+        $this->view = new \ElxDigital\CtaButton\View\View($this->view_path);
     }
 
     public function public(): void
@@ -22,7 +22,7 @@ class PublicController
         /**
          * IMPORTANTE PASSAR O CAMINHO DAS VIEWS DO SISTEMA QUE USARÁ ESTE BOTÃO
          */
-        $button = new \Elxdigital\CtaButton\Button($this->view_path);
+        $button = new \ElxDigital\CtaButton\Button($this->view_path);
 
         echo $this->view->render("public_use", [
             "btn_id" => $btn_id,
@@ -32,7 +32,7 @@ class PublicController
 
     public function private(): void
     {
-        $button = new \Elxdigital\CtaButton\Button();
+        $button = new \ElxDigital\CtaButton\Button();
 
         /**
          * MOCK DE DADOS PARA TESTES

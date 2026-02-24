@@ -1,6 +1,6 @@
 <?php
 
-namespace Elxdigital\CtaButton\Model;
+namespace ElxDigital\CtaButton\Model;
 
 use PDO;
 
@@ -13,7 +13,7 @@ class Button
 
     public function get(int $btn_id, ?bool $translate = false): object|array
     {
-        $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $conexao = new \ElxDigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
         $banco_de_dados = $conexao->getConnection();
         $entidade = "cta_button";
@@ -55,7 +55,7 @@ class Button
 
     public function getByIdentificador(string $identificador): object
     {
-        $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $conexao = new \ElxDigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
         $banco_de_dados = $conexao->getConnection();
 
@@ -110,7 +110,7 @@ class Button
             ':link_redir'        => $btnObject->link_redir,
         ];
 
-        $data_base = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $data_base = new \ElxDigital\CtaButton\Domain\DataBaseConnection();
         $data_base->connect();
 
         $pdo = $data_base->getConnection();
@@ -137,7 +137,7 @@ class Button
             !empty($this->getCamposTraduziveis())
         ) {
             $entidade = "cta_button";
-            $data_base = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+            $data_base = new \ElxDigital\CtaButton\Domain\DataBaseConnection();
             $data_base->connect();
             $pdo = $data_base->getConnection();
 
@@ -161,7 +161,7 @@ class Button
             ':cliques'          => $cliques,
         ];
 
-        $data_base = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $data_base = new \ElxDigital\CtaButton\Domain\DataBaseConnection();
         $data_base->connect();
 
         $pdo = $data_base->getConnection();
@@ -180,7 +180,7 @@ class Button
 
     public function getCamposTraduziveis(): array
     {
-        $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $conexao = new \ElxDigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
         $banco_de_dados = $conexao->getConnection();
         $dbName = $conexao->getDataBaseName();
@@ -194,7 +194,7 @@ class Button
 
     public function getCampos(): array
     {
-        $conexao = new \Elxdigital\CtaButton\Domain\DataBaseConnection();
+        $conexao = new \ElxDigital\CtaButton\Domain\DataBaseConnection();
         $conexao->connect();
         $banco_de_dados = $conexao->getConnection();
         $dbName = $conexao->getDataBaseName();

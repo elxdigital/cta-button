@@ -1,6 +1,6 @@
 <?php
 
-namespace Elxdigital\CtaButton\View;
+namespace ElxDigital\CtaButton\View;
 
 use League\Plates\Engine;
 

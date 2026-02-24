@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \League\Plates\Template\Template $this
- * @var \Elxdigital\CtaButton\Button $button
+ * @var \ElxDigital\CtaButton\Button $button
  * @var int $btn_id
  */
 

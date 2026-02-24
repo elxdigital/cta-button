@@ -1,6 +1,6 @@
 <?php
 
-namespace Elxdigital\CtaButton;
+namespace ElxDigital\CtaButton;
 
 require __DIR__ . "/../vendor/autoload.php";
 require_once __DIR__ . "/dep/set-variables.php";
@@ -36,7 +36,7 @@ class Button
         $arraySpanClasses = !empty($span_classes) ? $span_classes : [];
         $templates_path = $this->getPublicTemplatePath();
 
-        $controller = new \Elxdigital\CtaButton\Controller\ButtonController();
+        $controller = new \ElxDigital\CtaButton\Controller\ButtonController();
         $controller->render_public($btn_id, $arrayBtnClasses, $span, $templates_path, $arraySpanClasses, $content_before, $content_after, $translate);
     }
 
@@ -45,7 +45,7 @@ class Button
         $btn_id = $btn_cta_id !== null ? filter_var($btn_cta_id, FILTER_VALIDATE_INT) : null;
         $tipos_conversao = $this->getTiposConversao();
 
-        $controller = new \Elxdigital\CtaButton\Controller\ButtonController();
+        $controller = new \ElxDigital\CtaButton\Controller\ButtonController();
         $controller->render_admin($field_name, $identificador, $formularios, $btn_id, $tipos_conversao);
     }
 

@@ -109,7 +109,7 @@ Da mesma forma, no lugar onde carrega os estilos e scripts da parte administrati
 
 ### Parte do Painel Administrativo (admin):
 * `Button` - Instanciar a classe principal.
-  * Ex.: `new \Elxdigital\CtaButton\Button();`
+  * Ex.: `new \ElxDigital\CtaButton\Button();`
 
 #### Métodos
 * `renderPrivate` - renderiza o select no painel administrativo do site, ou seja, na parte de quem está gerenciando o conteúdo do site vê.
@@ -121,7 +121,7 @@ Da mesma forma, no lugar onde carrega os estilos e scripts da parte administrati
 
 ### Parte no Site (público):
 * `Button` - Instanciar a classe principal.
-  * Ex.: `new \Elxdigital\CtaButton\Button("caminho_para_views");`
+  * Ex.: `new \ElxDigital\CtaButton\Button("caminho_para_views");`
   * Parâmetro:
     * `template_path` - caminho/path para os templates do seu site.
 
