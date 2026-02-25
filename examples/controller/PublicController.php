@@ -5,7 +5,7 @@ namespace ElxDigital\CtaButton\Examples\Controller;
 class PublicController
 {
     private \Elxdigital\CtaButton\View\View $view;
-    private string $view_path = __DIR__ . "/../templates/";
+    private string $view_path = __DIR__ . "/../Templates/";
 
     public function __construct()
     {

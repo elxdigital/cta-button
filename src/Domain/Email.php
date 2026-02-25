@@ -2,7 +2,7 @@
 
 namespace ElxDigital\CtaButton\Domain;
 
-require_once __DIR__ . "/../dep/set-variables.php";
+require_once __DIR__ . "/../Dep/set-variables.php";
 
 class Email
 {

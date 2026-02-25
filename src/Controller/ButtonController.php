@@ -10,7 +10,7 @@ class ButtonController
 
     public function render_public(int $btn_id, array $arrayBtnClasses, bool $span, ?string $templates_path, array $arraySpanClasses, string $content_before, string $content_after, bool $translate): void
     {
-        $this->view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../template/");
+        $this->view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../Template/");
 
         $model = new \ElxDigital\CtaButton\Model\Button();
         $btn_conversao = $model->get($btn_id, $translate);
@@ -45,7 +45,7 @@ class ButtonController
 
     public function render_admin(string $field_name, string $btn_identificador, array $formularios, ?int $btn_id, array $tipos_conversao): void
     {
-        $this->view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../template/");
+        $this->view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../Template/");
 
         $btn_conversao = null;
         if (!empty($btn_id)) {

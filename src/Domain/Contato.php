@@ -41,7 +41,7 @@ class Contato
             TELEFONE: {$data['telefone']}
         ";
 
-        $view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../template/shared/views");
+        $view = new \ElxDigital\CtaButton\View\View(__DIR__ . "/../Template/shared/views");
         $subject = "[ LEAD DO SITE ] Novo lead clicou em um botão !";
 
         $body = $view->render("email", [
