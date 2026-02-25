@@ -16,8 +16,8 @@
             "ElxDigital\\CtaButton\\Examples\\": "examples/"
         },
         "files": [
-            "src/helper/string.php",
-            "src/helper/url.php"
+            "src/Helper/String.php",
+            "src/Helper/Url.php"
         ]
     },
     "authors": [
