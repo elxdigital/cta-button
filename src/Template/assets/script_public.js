@@ -30,11 +30,11 @@ $(document).ready(function () {
     });
 });
 
-$(".btn-send-form-cta-button").on('click', function (e) {
+$(document).on('click', ".btn-send-form-cta-button", function (e) {
     e.preventDefault();
 
     var load = $(".ajax_load");
-    var form = $(".cta-button-form-lead-wpp");
+    var form = $(this).closest("form.cta-button-form-lead-wpp");
 
     var newTab = window.open('', '_blank');
 
@@ -94,7 +94,7 @@ $(".btn-send-form-cta-button").on('click', function (e) {
     });
 });
 
-$(".button-cta-clicked").on("click", function () {
+$(document).on('click', ".button-cta-clicked", function () {
     let urlBase = $(this).data('url');
     let identificador = $(this).data('identificador');
 

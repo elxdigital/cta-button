@@ -10,79 +10,79 @@ class ComposerStaticInit1ce56f9279fedaafe230a8cd68058ce8
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '119c5c23b1750c031f50df500a6fe7c3' => __DIR__ . '/../..' . '/src/helper/string.php',
-        '2ea6f74a6c5f88e4180ec4409e08780c' => __DIR__ . '/../..' . '/src/helper/url.php',
+        'e92dde7fa24d8e0e778b864279a5313f' => __DIR__ . '/../..' . '/src/Helper/String.php',
+        '34b546be6bf29d54473098f287456d5f' => __DIR__ . '/../..' . '/src/Helper/Url.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
-        'P' => 
+        'P' =>
         array (
             'PhpOption\\' => 10,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
-        'L' => 
+        'L' =>
         array (
             'League\\Plates\\' => 14,
         ),
-        'G' => 
+        'G' =>
         array (
             'GrahamCampbell\\ResultType\\' => 26,
         ),
-        'E' => 
+        'E' =>
         array (
-            'Elxdigital\\CtaButton\\Examples\\' => 30,
-            'Elxdigital\\CtaButton\\' => 21,
+            'ElxDigital\\CtaButton\\Examples\\' => 30,
+            'ElxDigital\\CtaButton\\' => 21,
         ),
-        'D' => 
+        'D' =>
         array (
             'Dotenv\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Symfony\\Polyfill\\Php80\\' => 
+        'Symfony\\Polyfill\\Php80\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Ctype\\' => 
+        'Symfony\\Polyfill\\Ctype\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'PhpOption\\' => 
+        'PhpOption\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
-        'PHPMailer\\PHPMailer\\' => 
+        'PHPMailer\\PHPMailer\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
-        'League\\Plates\\' => 
+        'League\\Plates\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/plates/src',
         ),
-        'GrahamCampbell\\ResultType\\' => 
+        'GrahamCampbell\\ResultType\\' =>
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
         ),
-        'Elxdigital\\CtaButton\\Examples\\' => 
+        'ElxDigital\\CtaButton\\Examples\\' =>
         array (
             0 => __DIR__ . '/../..' . '/examples',
         ),
-        'Elxdigital\\CtaButton\\' => 
+        'ElxDigital\\CtaButton\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Dotenv\\' => 
+        'Dotenv\\' =>
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),

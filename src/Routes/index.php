@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/../../vendor/autoload.php';
+
 $route = $_GET['route'] ?? $_POST['route'] ?? null;
 $method = $_SERVER['REQUEST_METHOD'];
 
