@@ -36,6 +36,8 @@ $(".btn-send-form-cta-button").on('click', function (e) {
     var load = $(".ajax_load");
     var form = $(".cta-button-form-lead-wpp");
 
+    var newTab = window.open('', '_blank');
+
     form.ajaxSubmit({
         url: form.attr("action"),
         type: "POST",
@@ -56,11 +58,17 @@ $(".btn-send-form-cta-button").on('click', function (e) {
             //redirect
             if (response.redirect) {
                 if (response.target_blank) {
-                    window.open(response.redirect, '_blank');
+                    if (newTab) {
+                        newTab.location = response.redirect;
+                    } else {
+                        window.open(response.redirect, '_blank');
+                    }
                 } else {
+                    if (newTab) newTab.close();
                     window.location.href = response.redirect;
                 }
             } else {
+                if (newTab) newTab.close();
                 form.find("input[type='file']").val(null);
             }
 
@@ -80,6 +88,7 @@ $(".btn-send-form-cta-button").on('click', function (e) {
             }
         },
         error: function () {
+            if (newTab) newTab.close();
             ajaxMessage(ajaxResponseRequestError, 5);
         }
     });
