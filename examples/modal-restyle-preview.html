@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="theme-color" content="#F36B21">
+<title>CTA Button — Modal Restyle Preview</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f2f2f2;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .open-trigger {
+        padding: 14px 22px;
+        background: #141414;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
+    /* ===== MODAL ===== */
+    .wrap-modal { position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100vh; display: none; }
+    .wrap-modal .overlay-modal { position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.6); cursor: pointer; }
+
+    .wrap-modal .box-modal {
+        width: 480px;
+        max-width: calc(100% - 30px);
+        max-height: calc(100% - 30px);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        overflow-x: hidden;
+        overflow-y: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .wrap-modal .box-modal::-webkit-scrollbar { display: none; }
+
+    /* header band */
+    .wrap-modal .box-modal .box-title {
+        background: var(--cta-theme-color, #141414);
+        border-radius: 12px 12px 0 0;
+        padding: 28px 60px;
+        text-align: center;
+        position: relative;
+    }
+    .wrap-modal .box-modal .box-title h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 19px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+    }
+    .wrap-modal .box-modal .box-title p { margin: 8px 0 0; color: rgba(255,255,255,0.65); font-size: 13px; }
+
+    .wrap-modal .box-modal .close-modal {
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: none;
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.15s ease;
+    }
+    .wrap-modal .box-modal .close-modal:hover { background: rgba(255, 255, 255, 0.12); }
+    .wrap-modal .box-modal .close-modal svg { width: 16px; height: 16px; }
+    .wrap-modal .box-modal .close-modal svg path { stroke: #fff; }
+
+    /* body */
+    .wrap-modal .box-modal .box-body { padding: 32px; }
+    .wrap-modal .box-modal form { display: table; width: 100%; }
+    .wrap-modal .box-modal form .form-group { margin-bottom: 18px; }
+    .wrap-modal .box-modal form .field-title {
+        display: table;
+        color: #767676;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    .wrap-modal .box-modal form input {
+        width: 100%;
+        padding: 0 16px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background: #FFF;
+        height: 44px;
+        font-size: 14px;
+        color: #111;
+        font-family: inherit;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .wrap-modal .box-modal form input:focus {
+        outline: none;
+        border-color: #111;
+        box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+    }
+    .wrap-modal .box-modal form input::placeholder { color: #b3b3b3; }
+
+    .wrap-modal .box-modal form button {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        height: 48px;
+        background: #25D366;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: background 0.15s ease;
+    }
+    .wrap-modal .box-modal form button:hover { background: #1ebe5b; }
+    .wrap-modal .box-modal form button .icon-badge { display: flex; align-items: center; justify-content: center; }
+    .wrap-modal .box-modal form button .icon-badge svg { width: 18px; height: 18px; fill: #fff; }
+</style>
+</head>
+<body>
+
+<button class="open-trigger" id="openBtn">Solicitar Orçamento</button>
+
+<div id="form-preview" class="modal-button-cta wrap-modal" data-cta-modal="1" aria-hidden="true" style="display:none">
+    <div class="overlay-modal"></div>
+    <div class="box-modal">
+        <div class="box-title">
+            <button class="close-modal" aria-label="Fechar">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+            <h2>SOLICITE UM ORÇAMENTO</h2>
+        </div>
+        <div class="box-body">
+            <form>
+                <div class="form-group">
+                    <span class="field-title">Nome</span>
+                    <input type="text" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <span class="field-title">Telefone</span>
+                    <input type="tel" name="telefone" required>
+                </div>
+                <div class="form-group">
+                    <span class="field-title">E-mail</span>
+                    <input type="email" name="email" required>
+                </div>
+                <button type="button">
+                    <div class="icon-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.72.45 3.4 1.3 4.88L2.05 22l5.36-1.41a9.9 9.9 0 0 0 4.63 1.18h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.1h-.01c-1.44 0-2.86-.39-4.09-1.12l-.29-.17-3.18.84.85-3.1-.19-.32a8.15 8.15 0 0 1-1.25-4.32c0-4.5 3.67-8.16 8.17-8.16 2.18 0 4.23.85 5.77 2.4a8.1 8.1 0 0 1 2.39 5.77c0 4.5-3.67 8.18-8.17 8.18zm4.48-6.12c-.25-.12-1.45-.71-1.67-.8-.22-.08-.39-.12-.55.13-.16.24-.63.79-.78.96-.14.16-.29.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.55-1.32-.75-1.81-.2-.48-.4-.41-.55-.42-.14-.01-.31-.01-.47-.01-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.16 1.72 2.63 4.17 3.69.58.25 1.04.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28z"/></svg>
+                    </div>
+                    CONVERSAR
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta && themeMeta.content) {
+        document.documentElement.style.setProperty('--cta-theme-color', themeMeta.content);
+    }
+
+    document.getElementById('openBtn').addEventListener('click', function () {
+        document.getElementById('form-preview').style.display = 'block';
+    });
+    document.querySelectorAll('.close-modal, .overlay-modal').forEach(function (el) {
+        el.addEventListener('click', function () {
+            document.getElementById('form-preview').style.display = 'none';
+        });
+    });
+</script>
+
+</body>
+</html>
