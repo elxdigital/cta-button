@@ -27,14 +27,18 @@ echo $button->getFunction($arrayBtnClasses, $span, $arraySpanClasses, $content_b
         >
             <div class="overlay-modal"></div>
             <div class="box-modal">
-                <button class="close-modal"><span class="material-symbols-outlined">X</span></button>
                 <div class="box-title">
+                    <button class="close-modal" aria-label="Fechar">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
                     <h2><?= $button->getBtnTitulo() ?></h2>
                 </div>
 
-                <div class="row">
-                    <div class="col-xl-12">
-                        <?= $form ?>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <?= $form ?>
+                        </div>
                     </div>
                 </div>
             </div>

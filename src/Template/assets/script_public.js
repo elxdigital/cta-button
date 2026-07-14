@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    var ctaThemeMeta = document.querySelector('meta[name="theme-color"]');
+    if (ctaThemeMeta && ctaThemeMeta.content) {
+        document.documentElement.style.setProperty('--cta-theme-color', ctaThemeMeta.content);
+    }
+
     $('.telefone').mask('(00) 00000-0000');
 
     //MODAL
