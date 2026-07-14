@@ -1,25 +1,26 @@
 /* FORMULARIO MODAL */
-.wrap-modal {position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100vh; display: none;}
-.wrap-modal .overlay-modal {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.6); cursor: pointer;}
-.wrap-modal .box-modal {width: 480px; max-width: calc(100% - 30px); max-height: calc(100% - 30px); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 12px; background: #FFF; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); overflow-x: hidden; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;}
-.wrap-modal .box-modal::-webkit-scrollbar {display: none;}
-.wrap-modal .box-modal .box-title {background: var(--cta-theme-color, #141414); border-radius: 12px 12px 0 0; padding: 28px 60px; text-align: center; position: relative;}
-.wrap-modal .box-modal .box-title h2 {margin: 0; width: 100%; color: #FFF; font-size: 19px; font-weight: 600; letter-spacing: 0.3px;}
-.wrap-modal .box-modal .box-title p {margin: 8px 0 0; width: 100%; text-align: center; color: rgba(255, 255, 255, 0.65); font-size: 13px;}
-.wrap-modal .box-modal .close-modal {width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: none; background: none; position: absolute; top: 14px; right: 14px; border-radius: 50%; cursor: pointer; transition: background 0.15s ease;}
-.wrap-modal .box-modal .close-modal:hover {background: rgba(255, 255, 255, 0.12);}
-.wrap-modal .box-modal .close-modal svg {width: 16px; height: 16px;}
-.wrap-modal .box-modal .close-modal svg path {stroke: #FFF;}
-.wrap-modal .box-modal .box-body {padding: 32px;}
-.wrap-modal .box-modal form {display: table; width: 100%;}
-.wrap-modal .box-modal form .form-group {margin-bottom: 18px;}
-.wrap-modal .box-modal form .field-title {display: table; color: #767676; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;}
-.wrap-modal .box-modal form input, .wrap-modal .box-modal form textarea, .wrap-modal .box-modal form select {width: 100%; padding: 0 16px; border-radius: 8px; border: 1px solid #DDD; background: #FFF; height: 44px; font-size: 14px; color: #111;}
-.wrap-modal .box-modal form input:focus, .wrap-modal .box-modal form textarea:focus, .wrap-modal .box-modal form select:focus {outline: none; border-color: #111; box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);}
-.wrap-modal .box-modal form button {width: 100%; float: none; border: none; border-radius: 8px; height: 48px;}
-.wrap-modal .box-modal form button span {display: flex; align-items: center; justify-content: center; gap: 8px;}
-.wrap-modal .box-modal form button .icon-badge {display: flex; align-items: center; justify-content: center;}
-.wrap-modal .box-modal form button .icon-badge svg {width: 18px; height: 18px; fill: #FFF;}
+.cta-modal-wrap {position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100vh; display: none; font-family: inherit;}
+.cta-modal-wrap .cta-modal-overlay {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.6); cursor: pointer;}
+.cta-modal-wrap .cta-modal-box {width: 480px; max-width: calc(100% - 30px); max-height: calc(100% - 30px); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; padding: 0 !important; border-radius: 12px; background: #FFF; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); overflow-x: hidden; overflow-y: auto; -ms-overflow-style: none; scrollbar-width: none;}
+.cta-modal-wrap .cta-modal-box::-webkit-scrollbar {display: none;}
+.cta-modal-wrap .cta-modal-box .cta-modal-title {background: var(--cta-theme-color, #141414); border-radius: 12px 12px 0 0; padding: 28px 60px; text-align: center; position: relative;}
+.cta-modal-wrap .cta-modal-box .cta-modal-title h2 {margin: 0; width: 100%; color: #FFF; font-size: 19px; font-weight: 600; letter-spacing: 0.3px;}
+.cta-modal-wrap .cta-modal-box .cta-modal-title p {margin: 8px 0 0; width: 100%; text-align: center; color: rgba(255, 255, 255, 0.65); font-size: 13px;}
+.cta-modal-wrap .cta-modal-box .cta-modal-close {width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border: none; background: none; position: absolute; top: 14px; right: 14px; border-radius: 50%; cursor: pointer; transition: background 0.15s ease;}
+.cta-modal-wrap .cta-modal-box .cta-modal-close:hover {background: rgba(255, 255, 255, 0.12);}
+.cta-modal-wrap .cta-modal-box .cta-modal-close svg {width: 16px; height: 16px;}
+.cta-modal-wrap .cta-modal-box .cta-modal-close svg path {stroke: #FFF;}
+.cta-modal-wrap .cta-modal-box .cta-modal-body {padding: 32px;}
+.cta-modal-wrap .cta-modal-box form {display: table; width: 100%;}
+.cta-modal-wrap .cta-modal-box form .cta-modal-form-group {margin-bottom: 18px;}
+.cta-modal-wrap .cta-modal-box form .cta-modal-field-title {display: table; color: #767676; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;}
+.cta-modal-wrap .cta-modal-box form input, .cta-modal-wrap .cta-modal-box form textarea, .cta-modal-wrap .cta-modal-box form select {width: 100%; padding: 0 16px; border-radius: 8px; border: 1px solid #DDD; background: #FFF; height: 44px; font-size: 14px; font-family: inherit; color: #111;}
+.cta-modal-wrap .cta-modal-box form input:focus, .cta-modal-wrap .cta-modal-box form textarea:focus, .cta-modal-wrap .cta-modal-box form select:focus {outline: none; border-color: #111; box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);}
+.cta-modal-wrap .cta-modal-box form button {display: flex; align-items: center; justify-content: center; width: 100%; float: none; border: none; border-radius: 8px; height: 48px; background: #25D366; color: #FFF; font-size: 15px; font-family: inherit; font-weight: 600; letter-spacing: 0.3px; transition: background 0.15s ease;}
+.cta-modal-wrap .cta-modal-box form button:hover {background: #1ebe5b;}
+.cta-modal-wrap .cta-modal-box form button span {display: flex; align-items: center; justify-content: center; gap: 8px;}
+.cta-modal-wrap .cta-modal-box form button .cta-modal-icon-badge {display: flex; align-items: center; justify-content: center;}
+.cta-modal-wrap .cta-modal-box form button .cta-modal-icon-badge svg {width: 18px; height: 18px; fill: #FFF;}
 
 /*DEFAULT LOAD*/
 .ajax_load { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: calc(var(--index-modal) * 2); }

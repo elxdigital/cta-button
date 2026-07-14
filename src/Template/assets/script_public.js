@@ -21,8 +21,8 @@ $(document).ready(function () {
         return false;
     });
 
-    $(".close-modal, .overlay-modal").click(function(){
-        $(".wrap-modal").fadeOut(200);
+    $(".cta-modal-close, .cta-modal-overlay").click(function(){
+        $(".cta-modal-wrap").fadeOut(200);
         return false
     });
 

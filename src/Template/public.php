@@ -20,21 +20,21 @@ echo $button->getFunction($arrayBtnClasses, $span, $arraySpanClasses, $content_b
     <template id="cta-modal-tpl-<?= htmlspecialchars($button->getBtnIdentificador(), ENT_QUOTES) ?>">
         <div
                 id="form-<?= htmlspecialchars($button->getBtnIdentificador(), ENT_QUOTES) ?>"
-                class="modal-button-cta wrap-modal"
+                class="modal-button-cta cta-modal-wrap"
                 data-cta-modal="1"
                 aria-hidden="true"
                 style="display:none"
         >
-            <div class="overlay-modal"></div>
-            <div class="box-modal">
-                <div class="box-title">
-                    <button class="close-modal" aria-label="Fechar">
+            <div class="cta-modal-overlay"></div>
+            <div class="cta-modal-box">
+                <div class="cta-modal-title">
+                    <button class="cta-modal-close" aria-label="Fechar">
                         <svg viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke-width="2" stroke-linecap="round"/></svg>
                     </button>
                     <h2><?= $button->getBtnTitulo() ?></h2>
                 </div>
 
-                <div class="box-body">
+                <div class="cta-modal-body">
                     <div class="row">
                         <div class="col-xl-12">
                             <?= $form ?>

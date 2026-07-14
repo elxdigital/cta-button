@@ -40,12 +40,6 @@ class Button
             $arraySpanClasses
         ));
 
-        if ($funcao == 'lead_whatsapp' || $funcao == 'whatsapp') {
-            $titulo = $btn_title;
-            $newTitulo = "<i class='fa-brands fa-whatsapp'></i>&nbsp;{$titulo}";
-            $this->setBtnTitulo($newTitulo);
-        }
-
         $content_str = $span ? "<span {$span_attr}>{$btn_title}</span>" : $btn_title;
         $identificador = $this->getBtnIdentificador();
         $urlBase = !$translate ? getFullUrl() : urlComTraducao();
