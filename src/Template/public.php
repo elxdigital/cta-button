@@ -28,10 +28,11 @@ echo $button->getFunction($arrayBtnClasses, $span, $arraySpanClasses, $content_b
             <div class="cta-modal-overlay"></div>
             <div class="cta-modal-box">
                 <div class="cta-modal-title">
-                    <button class="cta-modal-close" aria-label="Fechar">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke-width="2" stroke-linecap="round"/></svg>
+                    <button type="button" class="cta-modal-close" aria-label="Fechar">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke-width="2" stroke-linecap="round"/></svg>
                     </button>
-                    <h2><?= $button->getBtnTitulo() ?></h2>
+                    <!-- título do modal sem <h2>: o modal entra em todas as páginas e poluía a hierarquia de títulos (SEO) -->
+                    <div class="cta-modal-heading"><?= $button->getBtnTitulo() ?></div>
                 </div>
 
                 <div class="cta-modal-body">
